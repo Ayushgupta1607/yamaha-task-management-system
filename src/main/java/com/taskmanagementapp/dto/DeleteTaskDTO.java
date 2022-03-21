@@ -1,0 +1,12 @@
+package com.taskmanagementapp.dto;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@NoArgsConstructor 
+@AllArgsConstructor
+public class DeleteTaskDTO {
+	private Integer task_id;
+}

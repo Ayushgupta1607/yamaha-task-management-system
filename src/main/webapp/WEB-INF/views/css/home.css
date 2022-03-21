@@ -1,0 +1,12 @@
+.taskTable{
+	display:flex;
+	flex-direction:column;
+}
+.createTaskButton {
+	width:15%;
+	align-self:flex-end;
+}
+
+.filterDropdown{
+	align-self:flex-end;
+}
