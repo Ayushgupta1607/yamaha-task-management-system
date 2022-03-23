@@ -1,9 +1,10 @@
-package com.taskmanagementapp.model.persistance;
+package com.taskmanagementapp.model.repository;
 
 import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
+
+import com.taskmanagementapp.model.entity.User;
 
 public interface UserRepository extends JpaRepository<User, Integer> {
 	public Optional<User> findByUsername(String Username);

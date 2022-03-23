@@ -2,6 +2,7 @@
 
 <!-- Modal -->
 <div class="modal fade" id="createTaskModal" tabindex="-1" role="dialog"
+ data-keyboard="false" data-backdrop="static"
 	aria-labelledby="exampleModalLabel" aria-hidden="true">
 	<div class="modal-dialog" role="document">
 		<div class="modal-content">
@@ -20,13 +21,14 @@
 							maxlength="50" required>
 					</div>
 					<div class="form-group">
-						<label for="DescriptionInput">Description</label>
+						<label for="#descriptionInput">Description</label>
 						<textarea name="description" value=''
 							class="form-control" id="DescriptionInput" maxlength="500"></textarea>
 					
 					</div>
 					<div class="form-group">
-						<select name="assigned_to_id" class="custom-select">
+					<label for="#assignedToInput">Assign To</label>
+						<select id="assignedToInput" name="assigned_to_id" class="custom-select">
 							<option selected value="0">unassign</option>
 							<c:forEach items="${users}" var="user">
 								<option value=${user.user_id }>${user.username}</option>
@@ -36,10 +38,9 @@
 				</form>
 			</div>
 			<div class="modal-footer">
-				<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-			<button type="reset" class="btn btn-primary" form="createTaskForm">Reset</button>
-				<button type="submit" form="createTaskForm" class="btn btn-primary">Save
-					changes</button>
+				<button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+			<button type="reset" class="btn reset" form="createTaskForm">Reset</button>
+				<button type="submit" form="createTaskForm" class="btn savebtn btn-primary">Create Task</button>
 			</div>
 		</div>
 	</div>

@@ -1,9 +1,10 @@
-package com.taskmanagementapp.model.persistance;
+package com.taskmanagementapp.model.entity;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -16,6 +17,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
@@ -23,6 +25,7 @@ import lombok.ToString;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString(exclude =  {"createdTasks","assignedTasks","comments","password"})
+@EqualsAndHashCode
 @Entity
 @Table(name = "`user`")
 public class User implements Serializable {
@@ -34,7 +37,9 @@ public class User implements Serializable {
 	private Integer user_id;
 
 	private String name;
+	@Column(unique=true)
 	private String email;
+	@Column(unique = true)
 	private String username;
 	@JsonIgnore
 	private String password;

@@ -1,12 +1,13 @@
 
 
 <!-- Modal -->
-<div class="modal fade" id="viewTaskModal" tabindex="-1" role="dialog"
+<div class="modal fade" id="viewTaskModal-${task.task_id }" tabindex="-1" role="dialog"
+ data-keyboard="false" data-backdrop="static"
 	aria-labelledby="exampleModalLabel" aria-hidden="true">
 	<div class="modal-dialog" role="document">
 		<div class="modal-content">
 			<div class="modal-header">
-				<h5 class="modal-title" id="exampleModalLabel">${ task.title}</h5>
+				<h5 class="modal-title" id="exampleModalLabel">Task details</h5>
 				<button type="button" class="close" data-dismiss="modal"
 					aria-label="Close">
 					<span aria-hidden="true">&times;</span>
@@ -17,41 +18,46 @@
 					
 					<tbody>
 						<tr>
-							<th scope="row">title</th>
+							<th scope="row">Title</th>
 							<td>${task.title }</td>
 						</tr>
 						<tr>
-							<th scope="row">description</th>
+							<th scope="row">Description</th>
 							<td>${task.description }</td>
 						</tr>
 						<tr>
-							<th scope="row">status</th>
-							<td>${task.status }</td>
+							<th scope="row">Status</th>
+							<td >${task.status }</td>
 						</tr>
 						<tr>
-							<th scope="row">started on</th>
+							<th scope="row">Started on</th>
 							<td>${task.startedDate!=null ? task.startedDate:"-"}</td>
 						</tr>
 						<tr>
-							<th scope="row">completed on</th>
+							<th scope="row">Completed on</th>
 							<td>${task.completionDate!=null?task.completionDate : "-" }</td>
 						</tr>
 						<tr>
-							<th scope="row">assigned to</th>
-							<td>${task.assignedTo.username }</td>
+							<th scope="row">Assigned to</th>
+							<td>${(task.assignedTo.username!=null)?task.assignedTo.username:'unassigned'}</td>
 						</tr>
 						<tr>
-							<th scope="row">created by</th>
+							<th scope="row">Created by</th>
 							<td>${task.createdBy.username }</td>
 						</tr>
-						<div style="overflow-y: auto; height: auto; max0-height: 200px">
-						<c:forEach items="${task.comments }" var="comment">
+						
+					
+					</tbody>
+				</table>
+				<c:if test="${task.comments.size()!=0}">
+				<h5>Comments</h3>
+				<div style="overflow-y: auto;  max-height: 100px">
+				<c:forEach items="${task.comments }" var="comment">
 							<b>${comment.user.username }</b>
 							<p>${comment.message }</p>
 						</c:forEach>
-					</div>
-					</tbody>
-				</table>
+						</div>
+						</c:if>
 			</div>
 			
 		</div>

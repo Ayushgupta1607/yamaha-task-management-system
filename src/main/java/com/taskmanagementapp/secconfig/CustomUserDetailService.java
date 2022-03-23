@@ -7,8 +7,8 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import com.taskmanagementapp.model.persistance.User;
-import com.taskmanagementapp.model.persistance.UserRepository;
+import com.taskmanagementapp.model.entity.User;
+import com.taskmanagementapp.model.repository.UserRepository;
 
 @Service
 public class CustomUserDetailService implements UserDetailsService {

@@ -1,4 +1,4 @@
-package com.taskmanagementapp.model.exceptions;
+package com.taskmanagementapp.web.exceptions;
 
 public class TaskNotFoundException extends RuntimeException {
 

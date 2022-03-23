@@ -40,7 +40,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 		.defaultSuccessUrl("/task/")
 		.permitAll()
 		.and()
-		.exceptionHandling().accessDeniedPage("/accessdenied")
+		.exceptionHandling().accessDeniedPage("/login")
 		.and().sessionManagement().maximumSessions(1);
 		 
 		http

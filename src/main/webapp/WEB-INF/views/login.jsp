@@ -13,22 +13,22 @@
 <style> <%@include file="css/login.css"%> </style>
 </head>
 <body>
-	<c:if test="${not empty SPRING_SECURITY_LAST_EXCEPTION }">
+	
+
+ <body class="text-center">
+ <form class="form-signin" action='login' method='POST'>
+      <h1 class="h3 mb-3 font-weight-normal">Please Log in</h1>
+  <c:if test="${not empty SPRING_SECURITY_LAST_EXCEPTION }">
 <font color="red">
 	<c:out value="${SPRING_SECURITY_LAST_EXCEPTION.message }"></c:out>
 </font>
 </c:if>
-
- <body class="text-center">
- <form class="form-signin" action='login' method='POST'>
-      <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
-  
       <input type="text" name='username' class="form-control" placeholder="UserName" required autofocus>
 
       <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password" required>
       <div class="checkbox mb-3">
       </div>
-      <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+      <button class="btn btn-lg btn-primary btn-block" type="submit">Log in</button>
     </form>
 </body>
 </html>

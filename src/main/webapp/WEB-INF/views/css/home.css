@@ -1,4 +1,5 @@
 .taskTable{
+	
 	display:flex;
 	flex-direction:column;
 }
@@ -6,7 +7,115 @@
 	width:15%;
 	align-self:flex-end;
 }
-
+.hometable
+{
+	text-align:center;
+}
+.modal{
+	text-align:left;
+}
 .filterDropdown{
+	
 	align-self:flex-end;
+}
+
+body {
+ /*   background-color:#eae7dc; */
+}
+@media (min-width: 991.98px) {
+  main {
+ 
+  padding-top:50px;;
+    padding-left: 240px;
+  }
+}
+
+/* Sidebar */
+.sidebar {
+	font-size:1.2rem;
+	
+	background-color:lightblue;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  padding: 58px 0 0; /* Height of navbar */
+  box-shadow: 0 2px 5px 0 rgb(0 0 0 / 10%), 0 2px 5px 0 rgb(0 0 0 / 10%);
+  width: 240px;
+  z-index: 10;
+}
+.list-group-item-action{
+	border-bottom:1px solid grey;
+}
+@media (max-width: 991.98px) {
+  .sidebar {
+    width: 100%;
+  }
+}
+.navbar{
+	background-color:#0047ab;
+	color:white;
+	position:fixed;
+	top:0;
+	width:100%;
+	z-index:10;
+	 box-shadow: 0 2px 5px 0 rgb(0 0 0 / 10%), 0 2px 10px 0 rgb(0 0 0 / 10%);
+}
+.sidebar .active {
+  border-radius: 5px;
+  box-shadow: 0 2px 5px 0 rgb(0 0 0 / 16%), 0 2px 10px 0 rgb(0 0 0 / 12%);
+}
+
+.sidebar-sticky {
+  position: relative;
+  top: 0;
+  height: calc(100vh - 48px);
+  padding-top: 0.5rem;
+  overflow-x: hidden;
+  overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
+}
+
+.addCommentButton{
+	display:flex;
+	margin-left:auto;
+	width:30%;
+}
+
+
+
+.list-group-item{
+	background-color:#e853;
+}
+.filterDropdownButton {
+		background-color:#8e8d8a;
+	
+}
+.createTaskButton{
+	/* background-color:#89cff0;	 */
+		border-width:0px;
+	
+	}
+	.btn-primary{
+	/* background-color:#89cff0; */	}
+	
+.viewbtn{
+	color:blue;
+}
+.updatebtn{
+	color:#19b809eb;
+}
+.deletebtn{
+	color:red;
+}
+.savebtn{
+	/* background-color: #007bff; */
+}
+.reset{
+	background-color:#ff65008f;
+}
+.comments{
+	margin-bottom:10px;
+}
+.badge{
+	margin-top:12.5px;
 }

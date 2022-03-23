@@ -27,18 +27,42 @@
 	crossorigin="anonymous"></script>
 <script src="https://kit.fontawesome.com/8246e66c6a.js"
 	crossorigin="anonymous"></script>
-	<style> <%@include file="css/home.css"%> </style>
-	<script > <%@include file="js/script.js"%></script>
+<style>
+<%@ include file="css/home.css"%>
+</style>
+<script>
+	
+<%@include file="js/script.js"%></script>
 </head>
 <body>
+	<header>
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="/tms/home">Task Management System</a>
-<div style="margin-left:auto " class="navbar-nav navbar-right">
-<a  href="<c:url value="/logout" />"><button class="btn btn-primary">Logout</button></a>
- </div>
- 
-</nav>
 
-	
-	
+
+		<nav id="sidebarMenu"
+			class="collapse d-lg-block sidebar collapse ">
+			<div class="position-sticky">
+				<div class="list-group list-group-flush mx-3 mt-4">
+					<a href="/tms/task"
+						class=" list-group-item-action py-2 ripple"
+						aria-current="true"> <i class="fas fa-tasks-alt"></i><span style="margin-left:10px"> Tasks</span>
+					</a> <a href="#"
+						class=" list-group-item-action py-2 ripple "><i class="fa fa-user" aria-hidden="true"></i>
+						
+						<span style="margin-left:10px"> Users</span>
+					</a>
+				</div>
+			</div>
+		</nav>
+
+		<!-- navbar -->
+		<nav class="navbar navbar-expand-lg navbar-dark">
+			<a class="navbar-brand" href="/tms/"><i class="fa-solid fa-lg fa-list-check"></i>  Task Management System</a>
+			<div style="margin-left: auto" class="navbar-nav navbar-right">
+				<a href="<c:url value="/logout" />">	<i style="color:white" class="fa-solid fa-lg fa-right-from-bracket"></i></a>
+					
+			</div>
+
+		</nav>
+			<%@ include file="alert.jsp"%>
+	</header>

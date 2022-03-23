@@ -1,8 +1,8 @@
-package com.taskmanagementapp.model.service;
+package com.taskmanagementapp.web.service;
 
 import java.util.List;
 
-import com.taskmanagementapp.model.persistance.User;
+import com.taskmanagementapp.model.entity.User;
 
 
 public interface UserService {
