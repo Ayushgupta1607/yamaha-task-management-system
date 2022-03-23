@@ -1,4 +1,4 @@
-package com.taskmanagementapp.model.entity;
+package com.taskmanagementapp.web.model.entity;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -17,15 +17,20 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
+
+/**
+ * User Entity
+ * 
+ * @author Ayush
+ *
+ */
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@ToString(exclude =  {"createdTasks","assignedTasks","comments","password"})
-@EqualsAndHashCode
+@ToString(exclude = { "createdTasks", "assignedTasks", "comments", "password" })
 @Entity
 @Table(name = "`user`")
 public class User implements Serializable {
@@ -33,15 +38,21 @@ public class User implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
+	@Column(name = "user_id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer user_id;
+	private Integer userId;
 
+	@Column(name = "name")
 	private String name;
-	@Column(unique=true)
+
+	@Column(name = "email", unique = true)
 	private String email;
-	@Column(unique = true)
+
+	@Column(name = "username", unique = true)
 	private String username;
+
 	@JsonIgnore
+	@Column(name = "password")
 	private String password;
 
 	@JsonBackReference
@@ -51,8 +62,8 @@ public class User implements Serializable {
 	@JsonBackReference
 	@OneToMany(mappedBy = "createdBy")
 	List<Task> assignedTasks = new ArrayList<Task>();
-	
+
 	@JsonBackReference
-	@OneToMany(mappedBy="user")
-	List<Comment> comments=new ArrayList<Comment>();
+	@OneToMany(mappedBy = "user")
+	List<Comment> comments = new ArrayList<Comment>();
 }

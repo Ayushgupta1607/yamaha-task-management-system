@@ -3,7 +3,12 @@ package com.taskmanagementapp.web.dto;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
+/**
+ * Register User Request DTO
+ * 
+ * @author Ayush
+ *
+ */
 @Data
 @NoArgsConstructor
 @AllArgsConstructor

@@ -1,8 +1,9 @@
-package com.taskmanagementapp.model.entity;
+package com.taskmanagementapp.web.model.entity;
 
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -18,24 +19,29 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
+/**
+ * Comment Entity 
+ * 
+ * @author Ayush
+ *
+ */
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@EqualsAndHashCode
 @ToString(exclude = "task")
 @Entity
 @Table(name = "comment")
 public class Comment implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	@Id
+	@Id @Column(name="comment_id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer comment_id;
+	private Integer commentId;
 
+	@Column(name="message")
 	private String message;
 
 	@JsonBackReference
@@ -48,21 +54,20 @@ public class Comment implements Serializable {
 	@JoinColumn(name = "fk_user")
 	private User user;
 
+	@Column(name = "created_at")
 	private Date createdAt;
-	
-	  @PrePersist
-	  protected void onCreate() {
-	    createdAt = new Date();
-	  }
 
-	  
+	@PrePersist
+	protected void onCreate() {
+		createdAt = new Date();
+	}
+
 	public Comment(String message, User user, Task task) {
 		super();
 		this.message = message;
 		this.task = task;
 		this.user = user;
-		
-		
+
 	}
 
 }

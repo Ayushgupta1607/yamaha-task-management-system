@@ -10,12 +10,15 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.taskmanagementapp.model.entity.User;
 import com.taskmanagementapp.web.dto.RegisterUserDto;
+import com.taskmanagementapp.web.model.entity.User;
 import com.taskmanagementapp.web.service.UserService;
 
 /**
  * Account Controller Configuration
+ * 
+ * @author Ayush
+ * 
  */
 @Controller
 public class AccountController {
@@ -27,6 +30,7 @@ public class AccountController {
 
 	/**
 	 * Get the login page of the application
+	 * 
 	 * @return display login page
 	 */
 	@GetMapping(path = "/login")
@@ -36,6 +40,7 @@ public class AccountController {
 
 	/**
 	 * Get the homepage of the application
+	 * 
 	 * @return redirect to homepage
 	 */
 	@GetMapping(path = "")
@@ -45,6 +50,7 @@ public class AccountController {
 
 	/**
 	 * Create a new User
+	 * 
 	 * @param registerUserDto Request DTO to create new User
 	 * @return ResponseEntity<User>
 	 */

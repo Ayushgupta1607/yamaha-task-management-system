@@ -1,5 +1,6 @@
 package com.taskmanagementapp.web.service;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -8,27 +9,28 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.taskmanagementapp.model.entity.Comment;
-import com.taskmanagementapp.model.entity.Task;
-import com.taskmanagementapp.model.entity.User;
-import com.taskmanagementapp.model.repository.CommentRepository;
-import com.taskmanagementapp.model.repository.TaskRepository;
-import com.taskmanagementapp.model.repository.UserRepository;
 import com.taskmanagementapp.web.dto.CreateTaskDto;
 import com.taskmanagementapp.web.dto.UpdatetaskDto;
 import com.taskmanagementapp.web.exceptions.TaskNotFoundException;
 import com.taskmanagementapp.web.exceptions.UserNotFoundException;
+import com.taskmanagementapp.web.model.entity.Comment;
+import com.taskmanagementapp.web.model.entity.Task;
+import com.taskmanagementapp.web.model.entity.User;
+import com.taskmanagementapp.web.repository.CommentRepository;
+import com.taskmanagementapp.web.repository.TaskRepository;
+import com.taskmanagementapp.web.repository.UserRepository;
 
 /**
  * Task Service Implementation
- * @author VE00YM351
+ * 
+ * @author Ayush
  *
  */
 
 @Service
 @Transactional
 public class TaskServiceImpl implements TaskService {
-
+	
 	@Autowired
 	private TaskRepository taskRepository;
 
@@ -39,34 +41,42 @@ public class TaskServiceImpl implements TaskService {
 	private CommentRepository commentRepository;
 
 	/**
-	 * Function to create new Task
-	*/	
-	
+	 * Method To Create a new Task
+	 * 
+	 * @param createTaskDto DTO for creating new task
+	 * @param currentUser   Current User of application
+	 * @return Task created task
+	 */
+
 	@Override
 	public Task createTask(CreateTaskDto createTaskDto, User currentUser) {
 		User taskAssignedToUser = null;
-		if (createTaskDto.getAssigned_to_id() != 0) {
-			taskAssignedToUser = userRepository.findById(createTaskDto.getAssigned_to_id()).orElseThrow(()->new UserNotFoundException("User not found"));
+		if (createTaskDto.getAssignedToId() != 0) {
+			taskAssignedToUser = userRepository.findById(createTaskDto.getAssignedToId())
+					.orElseThrow(() -> new UserNotFoundException("User not found"));
 		}
-		Task task=new Task(createTaskDto.getTitle(), createTaskDto.getDescription(),"TO-DO" ,currentUser,
+		Task task = new Task(createTaskDto.getTitle(), createTaskDto.getDescription(), "TO-DO", currentUser,
 				taskAssignedToUser);
 		taskRepository.save(task);
 		return null;
 	}
 
 	/**
-	 * Function to update existing Task
+	 * Method To Update a Task
+	 * 
+	 * @param updateTaskDto DTO for updating a task
+	 * @param currentUser   User of application
+	 * @return Task Updated Task
 	 */
-	public Task updateTask(UpdatetaskDto updateTaskDto, String username) {
-		User loggedInUser = userRepository.findByUsername(username)
-				.orElseThrow(() -> new UserNotFoundException("user not found"));
-		Task task = this.getTaskById(updateTaskDto.getTask_id());
+	public Task updateTask(UpdatetaskDto updateTaskDto, User currentUser) {
+		
+		Task task = taskRepository.findById(updateTaskDto.getAssignedToId())
+				.orElseThrow(() -> new TaskNotFoundException("Task Not Found"));
 
-		// Condition to change description of Task
-		if (updateTaskDto.getDescription() != null)
-			task.setDescription(updateTaskDto.getDescription());
+		// Update description of Task
+		task.setDescription(updateTaskDto.getDescription());
 
-		// Condition to change status of Task
+		// Update status of Task if status is true
 		if (updateTaskDto.getStatus() != null && updateTaskDto.getStatus() == true) {
 			if (task.getStatus().equals("TO-DO")) {
 				task.setStatus("IN-PROGRESS");
@@ -77,77 +87,59 @@ public class TaskServiceImpl implements TaskService {
 			}
 		}
 
-		// Condition to change AssignedTo User
+		// Update assignedTo of Task if AssignedToId is provided
 		User taskAssignedToUser;
-		if (updateTaskDto.getAssigned_to_id() != null) {
-			if (updateTaskDto.getAssigned_to_id() == 0) {
+		if (updateTaskDto.getAssignedToId() != null) {
+			if (updateTaskDto.getAssignedToId() == 0) {
 				task.setAssignedTo(null);
 			} else {
-				taskAssignedToUser = userRepository.findById(updateTaskDto.getAssigned_to_id())
+				taskAssignedToUser = userRepository.findById(updateTaskDto.getAssignedToId())
 						.orElseThrow(() -> new UserNotFoundException("User not found"));
 				task.setAssignedTo(taskAssignedToUser);
 			}
 		}
 		taskRepository.save(task);
 
-		// Conditions to add comments
+		// Add comments to Task if comments are provided
 		if (updateTaskDto.getComments() != null) {
 			for (String i : updateTaskDto.getComments()) {
-				Comment comment = new Comment(i, loggedInUser, task);
+				Comment comment = new Comment(i, currentUser, task);
 				commentRepository.save(comment);
 			}
 		}
 
-		return null;
+		return task;
 	}
 
 	/**
-	 * Function to get Task by Task ID;
-	 */
-	@Override
-	public Task getTaskById(Integer task_id) {
-		return taskRepository.findById(task_id).orElseThrow(() -> new TaskNotFoundException("Task Not Found"));
-	}
-
-	/**
-	 * Function to get List of all Tasks Created By or Assigned To a User
-	 * @return List<Task>
-	 */
-	@Override
-	public List<Task> getTasksCreatedByOrAssignedToUser(User user) {
-		return taskRepository.findtaskByCreatedByOrAssignedToAndIsDeleted(user,user,false);
-	}
-
-	
-
-	/**
-	 * Function to get List of Tasks created by a User
-	 * @return List<Task>
-	 */
-	@Override
-	public List<Task> getTasksCreatedBy(User user) {
-		return taskRepository.findByCreatedByAndIsDeleted(user,false);
-		
-	}
-
-	/**
-	 * Function to get List of Tasks assigned to a User
-	 * @return List<Task>
-	 */
-	
-	@Override
-	public List<Task> getTasksAssignedToUser(User user) {
-		System.out.println(taskRepository.findByCreatedByAndIsDeleted(user,false));
-		return taskRepository.findByAssignedToAndIsDeleted(user,false);
-	}
-
-	/**
-	 * Function to delete task
+	 * Method to Delete a Task
+	 * @param taskId Id of the task to be deleted
 	 */
 	@Override
 	public void deleteTask(Integer task_id) {
-		Task task=this.getTaskById(task_id);
+		Task task = taskRepository.findById(task_id).orElseThrow(() -> new TaskNotFoundException("Task Not Found"));
 		task.setDeleted(true);
 		taskRepository.save(task);
 	}
+
+	/**
+	 * Method to Retrieve List of Tasks of a User
+	 * 
+	 * @param user   User of application
+	 * @param filter Filter for List of Tasks
+	 * @return List<Task> List of Tasks 
+	 */
+	@Override
+	public List<Task> getTasksOfUser(User user, String filter) {
+		List<Task> tasks = new ArrayList<Task>();
+	
+		if (filter == null)
+			tasks = taskRepository.findtaskByCreatedByOrAssignedToAndIsDeleted(user, user, false);
+		else if (filter.equals("createdByMe")) {
+			tasks = taskRepository.findByCreatedByAndIsDeleted(user, false);
+		} else if (filter.equals("assignedToMe"))
+			tasks = taskRepository.findByAssignedToAndIsDeleted(user, false);
+		return tasks;
+	}
+
 }

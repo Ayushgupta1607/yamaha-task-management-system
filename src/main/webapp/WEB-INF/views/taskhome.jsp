@@ -6,9 +6,10 @@
 <main >
 <div class="container taskTable">
 
-
-	<button class="btn createTaskButton btn-primary" data-toggle="modal"
+	<h2 style="display:inline">Tasks</h2>
+	<button style="margin-left:auto" class="btn createTaskButton btn-primary" data-toggle="modal"
 		data-target="#createTaskModal">Create Task</button>
+		
 	<%@ include file="createtask.jsp"%>
 	<br>
 	<div class="dropdown filterDropdown">
@@ -55,20 +56,20 @@
 				</c:choose>
 				<td>
 					<button class="btn viewbtn" data-toggle="modal"
-						data-target="#viewTaskModal-${task.task_id }">
-						<i class="fa-solid fa-eye"> </i>
-					</button> <%@ include file="viewtask.jsp"%>
+							data-target="#viewTaskModal-${task.taskId }">
+							<i class="fa-solid fa-eye"> </i>
+						</button> <%@ include file="viewtask.jsp"%>
 					<c:choose>
 					<c:when test="${task.status!='COMPLETED' }">
 						<button class="btn updatebtn" data-toggle="modal" 
-							data-target="#updateTaskModal-${task.task_id }">
+							data-target="#updateTaskModal-${task.taskId}">
 							<i class="fa-solid fa-pen-to-square"></i>
 						</button>
 						<%@ include file="updatetask.jsp"%>
 						</c:when>
 						<c:otherwise>
-						<button class="btn " data-toggle="modal" disabled
-							data-target="#updateTaskModal-${task.task_id }">
+						<button onclick="disabledClick('edit')" style="color:#2125298c" class="btn " data-toggle="modal" 
+							data-target="#updateTaskModal-${task.taskId}">
 							<i class="fa-solid fa-pen-to-square"></i>
 						</button>
 						</c:otherwise>
@@ -76,14 +77,14 @@
 						<c:choose>
 					<c:when test="${task.assignedTo==null }">
 						<button class="btn deletebtn" data-toggle="modal"
-							data-target="#deleteTaskModal-${task.task_id }">
+							data-target="#deleteTaskModal-${task.taskId }">
 							<i class="fa-solid fa-trash-can"></i>
 						</button>
 						<%@ include file="deletetask.jsp"%>
 					</c:when>
 					<c:otherwise>
-					<button class="btn" data-toggle="modal" disabled
-							data-target="#deleteTaskModal-${task.task_id }">
+					<button onclick="disabledClick('update')" style="color:#2125298c" class="btn" data-toggle="modal" 
+							data-target="#deleteTaskModal-${task.taskId }">
 							<i class="fa-solid fa-trash-can"></i>
 						</button>
 					</c:otherwise>

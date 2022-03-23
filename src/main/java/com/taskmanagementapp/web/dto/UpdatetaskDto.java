@@ -3,15 +3,19 @@ package com.taskmanagementapp.web.dto;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
+/**
+ * Update Task Request DTO
+ * 
+ * @author Ayush
+ *
+ */
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class UpdatetaskDto {
-	private Integer task_id;
+	private Integer taskId;
 	private String description;
 	private Boolean status;
-	private Integer assigned_to_id;
-
+	private Integer assignedToId;
 	private String[] comments;
 }

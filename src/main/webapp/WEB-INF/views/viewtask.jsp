@@ -1,7 +1,7 @@
 
 
 <!-- Modal -->
-<div class="modal fade" id="viewTaskModal-${task.task_id }" tabindex="-1" role="dialog"
+<div class="modal fade" id="viewTaskModal-${task.taskId }" tabindex="-1" role="dialog"
  data-keyboard="false" data-backdrop="static"
 	aria-labelledby="exampleModalLabel" aria-hidden="true">
 	<div class="modal-dialog" role="document">
@@ -10,7 +10,7 @@
 				<h5 class="modal-title" id="exampleModalLabel">Task details</h5>
 				<button type="button" class="close" data-dismiss="modal"
 					aria-label="Close">
-					<span aria-hidden="true">&times;</span>
+					<i class="fa-solid fa-circle-xmark" ></i>
 				</button>
 			</div>
 			<div class="modal-body">

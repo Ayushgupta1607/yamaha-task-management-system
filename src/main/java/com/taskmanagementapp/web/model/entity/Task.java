@@ -1,4 +1,4 @@
-package com.taskmanagementapp.model.entity;
+package com.taskmanagementapp.web.model.entity;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -13,7 +13,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
@@ -23,34 +22,46 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
+/**
+ * Task Entity  
+ * 
+ * @author Ayush
+ *
+ */
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@EqualsAndHashCode
 @Entity
 @Table(name = "task")
-@NamedQuery(name = "Task.findtaskByCreatedByOrAssignedToAndIsDeleted", query = "SELECT t FROM Task t WHERE (t.createdBy = ?1 OR t.assignedTo = ?2) AND isDeleted= ?3")
 
 public class Task implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id()
+	@Column(name = "task_id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer task_id;
+	private Integer taskId;
 
+	@Column(name = "title")
 	private String title;
+
+	@Column(name = "description")
 	private String description;
+
+	@Column(name = "status")
 	private String status;
 
 	@Column(name = "started_date")
 	private Date startedDate;
+
 	@Column(name = "completion_date")
 	private Date completionDate;
 
-	private boolean isDeleted ;
+	@Column(name = "is_deleted")
+	private boolean isDeleted;
+
 	@JsonManagedReference
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "fk_created_by")
@@ -64,18 +75,23 @@ public class Task implements Serializable {
 	@JsonManagedReference
 	@OneToMany(mappedBy = "task")
 	List<Comment> comments = new ArrayList<Comment>();
-	
-	private Date createdAt;
-	private Date updatedAt;
-	  @PrePersist
-	  protected void onCreate() {
-	    createdAt = new Date();
-	  }
 
-	  @PreUpdate
-	  protected void onUpdate() {
-	    updatedAt = new Date();
-	  }
+	@Column(name = "created_at")
+	private Date createdAt;
+
+	@Column(name = "updated_at")
+	private Date updatedAt;
+
+	@PrePersist
+	protected void onCreate() {
+		createdAt = new Date();
+
+	}
+
+	@PreUpdate
+	protected void onUpdate() {
+		updatedAt = new Date();
+	}
 
 	public Task(String title, String description, String status, User createdBy, User assignedTo) {
 		super();
@@ -85,7 +101,7 @@ public class Task implements Serializable {
 		this.assignedTo = assignedTo;
 		this.createdBy = createdBy;
 		this.isDeleted = false;
-		this.createdAt=new Date();
+		this.createdAt = new Date();
 	}
 
 }
