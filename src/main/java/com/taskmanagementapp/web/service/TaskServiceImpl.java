@@ -53,7 +53,7 @@ public class TaskServiceImpl implements TaskService {
 
 	@Override
 	public Task createTask(CreateTaskDto createTaskDto, User currentUser) {
-		logger.info("Create Task Method of Task Service is called with Parameters createTaskDto:" + createTaskDto
+		logger.debug("Create Task Method of Task Service is called with Parameters createTaskDto:" + createTaskDto
 				+ "currentUser" + currentUser);
 
 		User taskAssignedToUser = null;
@@ -64,7 +64,7 @@ public class TaskServiceImpl implements TaskService {
 		Task task = new Task(createTaskDto.getTitle(), createTaskDto.getDescription(), "TO-DO", currentUser,
 				taskAssignedToUser);
 		taskRepository.save(task);
-		logger.info("Task created Successfully, task:" + task);
+		logger.debug("Task created Successfully, task:" + task);
 		return null;
 	}
 
@@ -76,7 +76,7 @@ public class TaskServiceImpl implements TaskService {
 	 * @return Task Updated Task
 	 */
 	public Task updateTask(UpdatetaskDto updateTaskDto, User currentUser) {
-		logger.info("Update Task Method of Task Service is called with Parameters updateTaskDto:" + updateTaskDto
+		logger.debug("Update Task Method of Task Service is called with Parameters updateTaskDto:" + updateTaskDto
 				+ " currentUser:" + currentUser);
 		Task task = taskRepository.findById(updateTaskDto.getTaskId())
 				.orElseThrow(() -> new TaskNotFoundException("Task Not Found"));
@@ -85,7 +85,7 @@ public class TaskServiceImpl implements TaskService {
 		task.setDescription(updateTaskDto.getDescription());
 
 		// Update status of Task if status is true
-		if (updateTaskDto.getStatus() != null && updateTaskDto.getStatus() == true) {
+		if ( Boolean.TRUE.equals(updateTaskDto.getStatus()) ) {
 			if (task.getStatus().equals("TO-DO")) {
 				task.setStatus("IN-PROGRESS");
 				task.setStartedDate(new Date());
@@ -115,7 +115,7 @@ public class TaskServiceImpl implements TaskService {
 				commentRepository.save(comment);
 			}
 		}
-		logger.info("Task Updated Successfully,task:" + task);
+		logger.debug("Task Updated Successfully,task:" + task);
 		return task;
 	}
 
@@ -125,9 +125,9 @@ public class TaskServiceImpl implements TaskService {
 	 * @param taskId Id of the task to be deleted
 	 */
 	@Override
-	public void deleteTask(Integer task_id) {
-		logger.info("Delete Task Method of Task Service is called with Parameters task_id:" + task_id);
-		Task task = taskRepository.findById(task_id).orElseThrow(() -> new TaskNotFoundException("Task Not Found"));
+	public void deleteTask(Integer taskId) {
+		logger.debug("Delete Task Method of Task Service is called with Parameters taskId:" + taskId);
+		Task task = taskRepository.findById(taskId).orElseThrow(() -> new TaskNotFoundException("Task Not Found"));
 		task.setDeleted(true);
 		taskRepository.save(task);
 	}
@@ -141,11 +141,11 @@ public class TaskServiceImpl implements TaskService {
 	 */
 	@Override
 	public List<Task> getTasksOfUser(User user, String filter) {
-		logger.info("Get Task Method of Task Service is called with Parameters user:" + user + " filter:" + filter);
+		logger.debug("Get Task Method of Task Service is called with Parameters user:" + user + " filter:" + filter);
 		List<Task> tasks = new ArrayList<Task>();
-
+		
 		if (filter == null)
-			tasks = taskRepository.findtaskByCreatedByOrAssignedToAndIsDeleted(user, user, false);
+			tasks = taskRepository.findTaskCreatedByOrAssignedToAndIsDeleted(user, user, false);
 		else if (filter.equals("createdByMe")) {
 			tasks = taskRepository.findByCreatedByAndIsDeleted(user, false);
 		} else if (filter.equals("assignedToMe"))

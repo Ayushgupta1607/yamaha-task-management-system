@@ -1,5 +1,7 @@
 package com.taskmanagementapp.web.controller;
 
+import org.hibernate.annotations.common.util.impl.LoggerFactory;
+import org.jboss.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -12,6 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.taskmanagementapp.web.dto.RegisterUserDto;
 import com.taskmanagementapp.web.model.entity.User;
+import com.taskmanagementapp.web.service.TaskServiceImpl;
 import com.taskmanagementapp.web.service.UserService;
 
 /**
@@ -22,6 +25,7 @@ import com.taskmanagementapp.web.service.UserService;
  */
 @Controller
 public class AccountController {
+	Logger logger = LoggerFactory.logger(TaskServiceImpl.class);
 
 	@Autowired
 	private PasswordEncoder passwordEncoder;
@@ -36,6 +40,7 @@ public class AccountController {
 	 */
 	@GetMapping(path = "/login")
 	public String appLogin() {
+		logger.info("Get Login Page request recieved");
 		return "login";
 	}
 
@@ -46,6 +51,7 @@ public class AccountController {
 	 */
 	@GetMapping(path = "")
 	public String home() {
+		logger.info(" Get Home Page request recireved");
 		return "redirect:task/";
 	}
 
@@ -57,7 +63,8 @@ public class AccountController {
 	 */
 	@PostMapping(path = "/register")
 	@ResponseBody
-	public ResponseEntity<?> Register(@RequestBody RegisterUserDto registerUserDto) {
+	public ResponseEntity<User> register(@RequestBody RegisterUserDto registerUserDto) {
+		logger.info("Register User Request Recieved");
 		User user = new User();
 		user.setName(registerUserDto.getName());
 		user.setEmail(registerUserDto.getEmail());

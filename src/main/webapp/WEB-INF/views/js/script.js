@@ -9,6 +9,7 @@ $(document).ready(function() {
 
 function disabledClick(btn){
 	let message;
+	
 	if(btn=="edit") message="Completed Task cannot be updated."
 		if(btn=="delete") message="Assigned Task cannot be deleted"
 	$('#toastmessage').html(message)

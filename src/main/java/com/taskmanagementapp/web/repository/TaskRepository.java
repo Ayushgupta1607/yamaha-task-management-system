@@ -15,12 +15,12 @@ import com.taskmanagementapp.web.model.entity.User;
  *
  */
 public interface TaskRepository extends JpaRepository<Task, Integer> {
-	public List<Task> findByCreatedByOrAssignedTo(User created_by, User assigned_to);
+	public List<Task> findByCreatedByOrAssignedTo(User createdBy, User assignedTo);
 
-	public List<Task> findByCreatedByAndIsDeleted(User created_by, boolean isDeleted);
+	public List<Task> findByCreatedByAndIsDeleted(User createdBy, boolean isDeleted);
 
-	public List<Task> findByAssignedToAndIsDeleted(User assigned_to, boolean isDeleted);
+	public List<Task> findByAssignedToAndIsDeleted(User assignedTo, boolean isDeleted);
 
 	@Query("SELECT task FROM Task task WHERE (task.createdBy = ?1 OR task.assignedTo = ?2) AND task.isDeleted= ?3")
-	public List<Task> findtaskByCreatedByOrAssignedToAndIsDeleted(User created_by, User assigned_to, boolean isDeleted);
+	public List<Task> findTaskCreatedByOrAssignedToAndIsDeleted(User createdBy, User assignedTo, boolean isDeleted);
 }

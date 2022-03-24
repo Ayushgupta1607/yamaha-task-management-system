@@ -57,13 +57,13 @@ public class User implements Serializable {
 
 	@JsonBackReference
 	@OneToMany(mappedBy = "assignedTo")
-	List<Task> createdTasks = new ArrayList<Task>();
+	private List<Task> createdTasks = new ArrayList<>();
 
 	@JsonBackReference
 	@OneToMany(mappedBy = "createdBy")
-	List<Task> assignedTasks = new ArrayList<Task>();
+	private List<Task> assignedTasks = new ArrayList<>();
 
 	@JsonBackReference
 	@OneToMany(mappedBy = "user")
-	List<Comment> comments = new ArrayList<Comment>();
+	private List<Comment> comments = new ArrayList<>();
 }

@@ -3,9 +3,12 @@ package com.taskmanagementapp.web.controller;
 import java.security.Principal;
 import java.util.List;
 
+import org.hibernate.annotations.common.util.impl.LoggerFactory;
+import org.jboss.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -14,12 +17,15 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.taskmanagementapp.web.common.Constants;
+import com.taskmanagementapp.web.common.Messages;
 import com.taskmanagementapp.web.dto.CreateTaskDto;
 import com.taskmanagementapp.web.dto.DeleteTaskDto;
 import com.taskmanagementapp.web.dto.UpdatetaskDto;
 import com.taskmanagementapp.web.model.entity.Task;
 import com.taskmanagementapp.web.model.entity.User;
 import com.taskmanagementapp.web.service.TaskService;
+import com.taskmanagementapp.web.service.TaskServiceImpl;
 import com.taskmanagementapp.web.service.UserService;
 
 /**
@@ -32,6 +38,7 @@ import com.taskmanagementapp.web.service.UserService;
 @RequestMapping(path = "/task")
 @Controller
 public class TaskController {
+	Logger logger = LoggerFactory.logger(TaskServiceImpl.class);
 
 	@Autowired
 	private TaskService taskService;
@@ -48,13 +55,14 @@ public class TaskController {
 	@PostMapping(path = "/")
 	public String createTask(ModelAndView mv, Principal principal, RedirectAttributes redirectAttributes,
 			@ModelAttribute CreateTaskDto createTaskDto) {
+		logger.info("Create Task request recieved");
 		String username = principal.getName();
 		User currentUser = userService.getUserByUsername(username);
 		// Invoking Task Service method to create Task
 		taskService.createTask(createTaskDto, currentUser);
 
-		redirectAttributes.addFlashAttribute("message", "Task created successfully");
-		return "redirect:/task/";
+		redirectAttributes.addFlashAttribute(Constants.NotificationHeader, Messages.TASK_CREATED_SUCCESSFULLY);
+		return Constants.redirectTask;
 	}
 
 	/**
@@ -67,14 +75,15 @@ public class TaskController {
 	@PostMapping(path = "/updateTask")
 	public String updateTask(Principal principal, RedirectAttributes redirectAttributes,
 			@ModelAttribute UpdatetaskDto updateTaskDto) {
+		logger.info("Update Task request recieved");
 		String username = principal.getName();
 		User user = userService.getUserByUsername(username);
 
 		// Invoking Task Service method to update Task
 		taskService.updateTask(updateTaskDto, user);
 
-		redirectAttributes.addFlashAttribute("message", "Task Updated Successfully");
-		return "redirect:/task/";
+		redirectAttributes.addFlashAttribute(Constants.NotificationHeader, Messages.TASK_UPDATED_SUCCESSFULLY);
+		return Constants.redirectTask;
 	}
 
 	/**
@@ -85,6 +94,7 @@ public class TaskController {
 	 */
 	@GetMapping(path = "")
 	public ModelAndView viewTasks(Principal principal, ModelAndView mv, @Nullable @RequestParam String filter) {
+		logger.info("View Tasks Page request recieved");
 		mv.setViewName("taskhome");
 		String username = principal.getName();
 		User user = userService.getUserByUsername(username);
@@ -111,10 +121,11 @@ public class TaskController {
 
 	@PostMapping(path = "/deleteTask")
 	public String deleteTask(@ModelAttribute DeleteTaskDto deleteTaskDto, RedirectAttributes redirectAttributes) {
+		logger.info("Delete Task request recieved");
 		// Invoking Task Service method to delete Task
 		taskService.deleteTask(deleteTaskDto.getTaskId());
 
-		redirectAttributes.addFlashAttribute("message", "Task Deleted Successfully");
-		return "redirect:/task/";
+		redirectAttributes.addFlashAttribute(Constants.NotificationHeader, Messages.TASK_DELETED_SUCCESSFULLY);
+		return Constants.redirectTask;
 	}
 }

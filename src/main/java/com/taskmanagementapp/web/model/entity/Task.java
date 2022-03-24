@@ -74,7 +74,7 @@ public class Task implements Serializable {
 
 	@JsonManagedReference
 	@OneToMany(mappedBy = "task")
-	List<Comment> comments = new ArrayList<Comment>();
+	private List<Comment> comments = new ArrayList<>();
 
 	@Column(name = "created_at")
 	private Date createdAt;

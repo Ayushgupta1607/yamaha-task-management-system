@@ -22,7 +22,7 @@
 					</div>
 					<div class="form-group">
 						<label for="#descriptionInput">Description</label>
-						<textarea name="description" value=''  placeholder="Maximum 50 characters" class="form-control" id="DescriptionInput" maxlength="500"></textarea>
+						<textarea name="description" value=''  placeholder="Maximum 500 characters" class="form-control" id="DescriptionInput" maxlength="500"></textarea>
 					</div>
 					<div class="form-group">
 					<label for="#assignedToInput">Assign To</label>

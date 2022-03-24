@@ -13,7 +13,7 @@ import com.taskmanagementapp.web.model.entity.User;
  *
  */
 public interface UserRepository extends JpaRepository<User, Integer> {
-	public Optional<User> findByUsername(String Username);
+	public Optional<User> findByUsername(String username);
 
-	public Boolean existsByUsername(String Username);
+	public Boolean existsByUsername(String username);
 }

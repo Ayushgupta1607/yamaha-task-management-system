@@ -37,7 +37,7 @@ public class UserServiceImpl implements UserService {
 	 */
 	public User createUser(User user) {
 		logger.info("Create User Method of User Service is called with Parameters user:" + user);
-		if (userRepository.existsByUsername(user.getUsername())) {
+		if (Boolean.TRUE.equals(userRepository.existsByUsername(user.getUsername()))) {
 			throw new UserNotFoundException("user already exists");
 		}
 		userRepository.save(user);
