@@ -101,7 +101,11 @@ body {
 	/* background-color:#89cff0; */
 	
 }
-
+.close{
+	opacity:inherit;
+	color:red;
+	text-shadow:none;
+}
 .viewbtn {
 	color: blue;
 }
@@ -122,11 +126,12 @@ body {
 		background-color: #0047ab;
 	color:white;
 }
-.close{
+/* .close{
 	background-color:none;
 	color:red;
-}
+} */
 .toast{
+	z-index:1;
 	background-color:lightgreen;
 }
 .toast-header{

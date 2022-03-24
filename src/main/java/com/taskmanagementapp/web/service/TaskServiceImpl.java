@@ -6,6 +6,8 @@ import java.util.List;
 
 import javax.transaction.Transactional;
 
+import org.hibernate.annotations.common.util.impl.LoggerFactory;
+import org.jboss.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -30,7 +32,8 @@ import com.taskmanagementapp.web.repository.UserRepository;
 @Service
 @Transactional
 public class TaskServiceImpl implements TaskService {
-	
+	Logger logger = LoggerFactory.logger(TaskServiceImpl.class);
+
 	@Autowired
 	private TaskRepository taskRepository;
 
@@ -50,6 +53,9 @@ public class TaskServiceImpl implements TaskService {
 
 	@Override
 	public Task createTask(CreateTaskDto createTaskDto, User currentUser) {
+		logger.info("Create Task Method of Task Service is called with Parameters createTaskDto:" + createTaskDto
+				+ "currentUser" + currentUser);
+
 		User taskAssignedToUser = null;
 		if (createTaskDto.getAssignedToId() != 0) {
 			taskAssignedToUser = userRepository.findById(createTaskDto.getAssignedToId())
@@ -58,6 +64,7 @@ public class TaskServiceImpl implements TaskService {
 		Task task = new Task(createTaskDto.getTitle(), createTaskDto.getDescription(), "TO-DO", currentUser,
 				taskAssignedToUser);
 		taskRepository.save(task);
+		logger.info("Task created Successfully, task:" + task);
 		return null;
 	}
 
@@ -69,8 +76,9 @@ public class TaskServiceImpl implements TaskService {
 	 * @return Task Updated Task
 	 */
 	public Task updateTask(UpdatetaskDto updateTaskDto, User currentUser) {
-		
-		Task task = taskRepository.findById(updateTaskDto.getAssignedToId())
+		logger.info("Update Task Method of Task Service is called with Parameters updateTaskDto:" + updateTaskDto
+				+ " currentUser:" + currentUser);
+		Task task = taskRepository.findById(updateTaskDto.getTaskId())
 				.orElseThrow(() -> new TaskNotFoundException("Task Not Found"));
 
 		// Update description of Task
@@ -107,16 +115,18 @@ public class TaskServiceImpl implements TaskService {
 				commentRepository.save(comment);
 			}
 		}
-
+		logger.info("Task Updated Successfully,task:" + task);
 		return task;
 	}
 
 	/**
 	 * Method to Delete a Task
+	 * 
 	 * @param taskId Id of the task to be deleted
 	 */
 	@Override
 	public void deleteTask(Integer task_id) {
+		logger.info("Delete Task Method of Task Service is called with Parameters task_id:" + task_id);
 		Task task = taskRepository.findById(task_id).orElseThrow(() -> new TaskNotFoundException("Task Not Found"));
 		task.setDeleted(true);
 		taskRepository.save(task);
@@ -127,12 +137,13 @@ public class TaskServiceImpl implements TaskService {
 	 * 
 	 * @param user   User of application
 	 * @param filter Filter for List of Tasks
-	 * @return List<Task> List of Tasks 
+	 * @return List<Task> List of Tasks
 	 */
 	@Override
 	public List<Task> getTasksOfUser(User user, String filter) {
+		logger.info("Get Task Method of Task Service is called with Parameters user:" + user + " filter:" + filter);
 		List<Task> tasks = new ArrayList<Task>();
-	
+
 		if (filter == null)
 			tasks = taskRepository.findtaskByCreatedByOrAssignedToAndIsDeleted(user, user, false);
 		else if (filter.equals("createdByMe")) {

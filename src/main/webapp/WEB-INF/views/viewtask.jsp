@@ -17,6 +17,10 @@
 				<table class="table">
 					
 					<tbody>
+					<tr>
+							<th scope="row">Task ID</th>
+							<td>Task${task.taskId }</td>
+						</tr>
 						<tr>
 							<th scope="row">Title</th>
 							<td>${task.title }</td>
@@ -30,20 +34,37 @@
 							<td >${task.status }</td>
 						</tr>
 						<tr>
+						
 							<th scope="row">Started on</th>
-							<td>${task.startedDate!=null ? task.startedDate:"-"}</td>
+							<c:choose>
+							<c:when test="${ task.startedDate!=null}">
+							<td><fmt:formatDate value="${task.startedDate}" pattern="dd-MM-yyyy " />
+</td>
+							</c:when>
+							<c:otherwise>
+							<td>-</td>
+							</c:otherwise>
+							</c:choose>
+							
 						</tr>
 						<tr>
 							<th scope="row">Completed on</th>
-							<td>${task.completionDate!=null?task.completionDate : "-" }</td>
+							<c:choose>
+							<c:when test="${ task.completionDate!=null}">
+							<td><fmt:formatDate value="${task.completionDate}" pattern="dd-MM-yyyy " />
+							</c:when>
+							<c:otherwise>
+							<td>-</td>
+							</c:otherwise>
+							</c:choose>
 						</tr>
 						<tr>
 							<th scope="row">Assigned to</th>
-							<td>${(task.assignedTo.username!=null)?task.assignedTo.username:'unassigned'}</td>
+							<td>${(task.assignedTo.username!=null)?task.assignedTo.username.toUpperCase():'Unassigned'}</td>
 						</tr>
 						<tr>
 							<th scope="row">Created by</th>
-							<td>${task.createdBy.username }</td>
+							<td>${task.createdBy.username.toUpperCase() }</td>
 						</tr>
 						
 					

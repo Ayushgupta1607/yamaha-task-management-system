@@ -18,7 +18,7 @@
 			<div class="modal-footer">
 				<button type="button" class="btn btn-danger closebtn" data-dismiss="modal">Cancel</button>
 				<form action="deleteTask" id="deleteTaskForm-${task.taskId }" method="POST">
-					<input type="hidden" name="task_id" value=${task.taskId }> 
+					<input type="hidden" name="taskId" value=${task.taskId }> 
 				<button type="submit" form="deleteTaskForm-${task.taskId }" class="btn btn-primary">Delete
 					Task</button>
 				</form>

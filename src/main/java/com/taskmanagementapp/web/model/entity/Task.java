@@ -25,7 +25,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 /**
- * Task Entity  
+ * Task Entity
  * 
  * @author Ayush
  *

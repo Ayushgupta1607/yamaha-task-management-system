@@ -28,7 +28,7 @@ public interface TaskService {
 	 * 
 	 * @param user   User of application
 	 * @param filter Filter for List of Tasks
-	 * @return List<Task> List of Tasks 
+	 * @return List<Task> List of Tasks
 	 */
 	public List<Task> getTasksOfUser(User user, String filter);
 
@@ -43,6 +43,7 @@ public interface TaskService {
 
 	/**
 	 * Method to Delete a Task
+	 * 
 	 * @param taskId Id of the task to be deleted
 	 */
 	public void deleteTask(Integer taskId);

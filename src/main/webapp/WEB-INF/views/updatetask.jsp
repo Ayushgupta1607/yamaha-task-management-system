@@ -13,20 +13,25 @@
 				<button type="button" class="close"
 					onClick="closeModal(${task.taskId})"
 					form="updateTaskForm-${task.taskId}" aria-label="Close">
-					<i class="fa-solid fa-circle-xmark" ></i>
+					
+		 <i class="fa-solid fa-circle-xmark" ></i> 
 				</button>
 			</div>
 			<div class="modal-body">
 				<form action="updateTask" id="updateTaskForm-${task.taskId }"
 					method="POST">
 					<div class="form-group" >
+					<label>Task ID</label>
+					<input class="form-control " readonly  value="Task${task.taskId }" />
+					</div>
+					<div class="form-group" >
 					<label>Title</label>
-					<input class="form-control " readonly  value=${task.title } />
+					<input class="form-control " readonly  value="${task.title }" />
 					</div>
 					<input type="hidden" name="taskId" value=${task.taskId }>
 					<div class="form-group">
 						<label for="DescriptionInput">Description</label>
-						<textarea name="description" class="form-control"
+						<textarea name="description" class="form-control" placeholder="Maximum 500 characters"
 							id="DescriptionInput" maxlength="500">${task.description }</textarea>
 					</div>
 					<c:if test="${task.assignedTo==currentUser }">
@@ -48,18 +53,16 @@
 					<div class="form-group">
 					<label for="#AssignToInput">Assign To</label>
 						<select name="assignedToId" class="custom-select">
-	<c:choose>
-	<c:when test="${task.assignedTo!=null }">
-	<option value="${task.assignedTo.userId}" selected>${task.assignedTo.username }</option>
-							<option value=0>unassign</option>
-	</c:when>
-						<c:otherwise><option value=0 selected>unassign</option> </c:otherwise>
-						<%-- 	<option value="${task.assignedTo.user_id}" selected>${task.assignedTo.username }</option>
-							<option value=0>unassign</option> --%>
+						<c:choose>
+						<c:when test="${task.assignedTo!=null }">
+						<option value="${task.assignedTo.userId}" selected>${task.assignedTo.username.toUpperCase() }</option>
+												<option value=0>Unassigned</option>
+						</c:when>
+						<c:otherwise><option value=0 selected>Unassigned</option> </c:otherwise>
 							</c:choose>
 							<c:forEach items="${users}" var="user">
 								<c:if test="${(task.assignedTo.userId)!=(user.userId) }">
-									<option value=${user.userId }>${user.username}</option>
+									<option value=${user.userId }>${user.username.toUpperCase()}</option>
 								</c:if>
 							</c:forEach>
 						</select>
@@ -69,7 +72,7 @@
 					<div class="form-group">
 						<label for="commentInput">Comments</label>
 					<div id="commentdiv-${task.taskId}"></div>
-						<textarea class="form-control" id="commentInput-${task.taskId }"
+						<textarea class="form-control" placeholder="Maximum 200 characters" id="commentInput-${task.taskId }"
 							maxlength="200"></textarea>
 					</div>
 						<div class="form-group">

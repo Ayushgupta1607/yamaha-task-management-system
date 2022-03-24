@@ -6,6 +6,7 @@ $(document).ready(function() {
 	}
 })
 
+
 function disabledClick(btn){
 	let message;
 	if(btn=="edit") message="Completed Task cannot be updated."

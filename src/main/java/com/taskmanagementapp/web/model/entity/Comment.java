@@ -23,7 +23,7 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 /**
- * Comment Entity 
+ * Comment Entity
  * 
  * @author Ayush
  *
@@ -37,11 +37,12 @@ import lombok.ToString;
 public class Comment implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	@Id @Column(name="comment_id")
+	@Id
+	@Column(name = "comment_id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer commentId;
 
-	@Column(name="message")
+	@Column(name = "message")
 	private String message;
 
 	@JsonBackReference

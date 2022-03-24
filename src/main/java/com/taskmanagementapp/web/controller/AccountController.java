@@ -22,6 +22,7 @@ import com.taskmanagementapp.web.service.UserService;
  */
 @Controller
 public class AccountController {
+
 	@Autowired
 	private PasswordEncoder passwordEncoder;
 

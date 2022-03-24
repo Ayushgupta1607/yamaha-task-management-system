@@ -5,10 +5,11 @@
 
 <main >
 <div class="container taskTable">
-
-	<h2 style="display:inline">Tasks</h2>
-	<button style="margin-left:auto" class="btn createTaskButton btn-primary" data-toggle="modal"
+<div style="display:flex;flex-direction:row">
+	<h2 style="display:inline">Tasks List</h2>
+	<button style="margin-left:auto;margin-bottom:5px" class="btn createTaskButton btn-primary" data-toggle="modal"
 		data-target="#createTaskModal">Create Task</button>
+		</div>
 		
 	<%@ include file="createtask.jsp"%>
 	<br>
@@ -28,19 +29,19 @@
 	<table class="table hometable table-striped table-borderless">
 		<thead >
 			<tr style="border:solid ; border-color:grey ;border-width:0px;border-bottom-width:1.5px">
-
+				<th>Task ID</th>
 				<th>Title</th>
 				<th>Status</th>
 				<th>Created By</th>
 				<th>Assigned To</th>
-				<th>Action</th>
+				<th style="text-align:center">Action</th>
 
 			</tr>
 		</thead>
 
 		<c:forEach items="${tasks}" var="task">
-
 			<tr style="border:solid ; border-color:grey ;border-width:0px;border-bottom-width:1.5px">
+			<td>Task${task.taskId }</td>
 				<td>${task.title}</td>
 				<c:choose>
 				<c:when test="${(task.status=='TO-DO')}"><td style="color:blue; font-weight:bold" class="status ">${task.status}</td></c:when>
@@ -48,13 +49,13 @@
 				<c:otherwise><td style="color:green; font-weight:bold" class="status  ">${task.status}</td></c:otherwise>
 				</c:choose>
 				
-				<td>${task.createdBy.username}</td>
+				<td>${task.createdBy.username.toUpperCase()}</td>
 	
 				<c:choose>
-				<c:when test="${(task.assignedTo.username!=null)}"><td>${task.assignedTo.username}</td></c:when>
-				<c:otherwise><td style="color:red">unassigned</td></c:otherwise>
+				<c:when test="${(task.assignedTo.username!=null)}"><td>${task.assignedTo.username.toUpperCase()}</td></c:when>
+				<c:otherwise><td style="color:red">Unassigned</td></c:otherwise>
 				</c:choose>
-				<td>
+				<td style="text-align:center">
 					<button class="btn viewbtn" data-toggle="modal"
 							data-target="#viewTaskModal-${task.taskId }">
 							<i class="fa-solid fa-eye"> </i>
@@ -83,7 +84,7 @@
 						<%@ include file="deletetask.jsp"%>
 					</c:when>
 					<c:otherwise>
-					<button onclick="disabledClick('update')" style="color:#2125298c" class="btn" data-toggle="modal" 
+					<button onclick="disabledClick('delete')" style="color:#2125298c" class="btn" data-toggle="modal" 
 							data-target="#deleteTaskModal-${task.taskId }">
 							<i class="fa-solid fa-trash-can"></i>
 						</button>

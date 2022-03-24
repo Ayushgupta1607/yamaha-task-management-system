@@ -41,7 +41,7 @@ public class TaskController {
 	/**
 	 * Create a new Task
 	 * 
-	 * @param createTaskDto Request DTO for creating new Task
+	 * @param createTaskDto      Request DTO for creating new Task
 	 * @param redirectAttributes Attributes to display messages
 	 * @return redirect to home page
 	 */
@@ -60,7 +60,7 @@ public class TaskController {
 	/**
 	 * Update an existing Task
 	 * 
-	 * @param updateTaskDto Request DTO to update Task
+	 * @param updateTaskDto      Request DTO to update Task
 	 * @param redirectAttributes Attributes to display message
 	 * @return redirect to home page
 	 */
@@ -68,10 +68,11 @@ public class TaskController {
 	public String updateTask(Principal principal, RedirectAttributes redirectAttributes,
 			@ModelAttribute UpdatetaskDto updateTaskDto) {
 		String username = principal.getName();
-		User user=userService.getUserByUsername(username);
+		User user = userService.getUserByUsername(username);
+
 		// Invoking Task Service method to update Task
 		taskService.updateTask(updateTaskDto, user);
-		
+
 		redirectAttributes.addFlashAttribute("message", "Task Updated Successfully");
 		return "redirect:/task/";
 	}
@@ -87,6 +88,7 @@ public class TaskController {
 		mv.setViewName("taskhome");
 		String username = principal.getName();
 		User user = userService.getUserByUsername(username);
+
 		// Invoking Task Service Method to retrieve List of Tasks
 		List<Task> tasks = taskService.getTasksOfUser(user, filter);
 		// Invoking User Service Method to retrieve List of All Users
@@ -102,7 +104,7 @@ public class TaskController {
 	/**
 	 * Delete an existing Task
 	 * 
-	 * @param deleteTaskDto Request DTO for deleting Task
+	 * @param deleteTaskDto      Request DTO for deleting Task
 	 * @param redirectAttributes Attributes to display messages
 	 * @return redirect to home page
 	 */

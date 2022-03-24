@@ -18,18 +18,18 @@
 				<form action="" id="createTaskForm" method="post">
 					<div class="form-group">
 						<label for="#TitleInput">Title<span style="color:red">*</span></label> 
-						<input type="text" name="title" value='' class="form-control" id="TitleInput" maxlength="50" required>
+						<input type="text" name="title" pattern="^\s*(\S(.*\S)?)\s*$" placeholder="Maximum 100 characters" value='' minlength="0" class="form-control" id="TitleInput" maxlength="100" required>
 					</div>
 					<div class="form-group">
 						<label for="#descriptionInput">Description</label>
-						<textarea name="description" value='' class="form-control" id="DescriptionInput" maxlength="500"></textarea>
+						<textarea name="description" value=''  placeholder="Maximum 50 characters" class="form-control" id="DescriptionInput" maxlength="500"></textarea>
 					</div>
 					<div class="form-group">
 					<label for="#assignedToInput">Assign To</label>
 						<select id="assignedToInput" name="assignedToId" class="custom-select">
-							<option selected value="0">unassign</option>
+							<option selected value="0">Unassigned</option>
 							<c:forEach items="${users}" var="user">
-								<option value=${user.userId }>${user.username}</option>
+								<option value=${user.userId }>${user.username.toUpperCase()}</option>
 							</c:forEach>
 						</select>
 					</div>
