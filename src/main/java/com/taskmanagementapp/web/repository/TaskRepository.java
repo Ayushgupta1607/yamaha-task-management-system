@@ -12,6 +12,7 @@ import com.taskmanagementapp.web.model.entity.User;
  * Task Repository Interface
  * 
  * @author Ayush
+ * @version 0.1, 25 March 2022
  */
 public interface TaskRepository extends JpaRepository<Task, Integer> {
 	public List<Task> findByCreatedByOrAssignedTo(User createdBy, User assignedTo);

@@ -17,9 +17,10 @@ import com.taskmanagementapp.web.model.entity.User;
 import com.taskmanagementapp.web.service.UserService;
 
 /**
- * Account Controller Configuration
+ * Controller to create a new User and render login screen
  * 
  * @author Ayush
+ * @version 0.1, 25 March 2022
  */
 @Controller
 public class AccountController {
@@ -54,7 +55,7 @@ public class AccountController {
 	}
 
 	/**
-	 * Create a new User
+	 * Create a new User with encrypted password if not exists already 
 	 * 
 	 * @param registerUserDto Request DTO to create new User
 	 * @return ResponseEntity<User>

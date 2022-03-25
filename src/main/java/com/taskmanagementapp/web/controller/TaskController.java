@@ -27,9 +27,10 @@ import com.taskmanagementapp.web.service.TaskService;
 import com.taskmanagementapp.web.service.UserService;
 
 /**
- * Task Controller Configuration
+ * Controller to perform CRUD operations on task and render the Task home page 
  * 
  * @author Ayush
+ * @version 0.1, 25 March 2022
  */
 @RequestMapping(path = "/task")
 @Controller
@@ -42,7 +43,7 @@ public class TaskController {
 	private UserService userService;
 
 	/**
-	 * Create a new Task
+	 * Create a new Task for the Current User as creator 
 	 * 
 	 * @param createTaskDto      Request DTO for creating new Task
 	 * @param redirectAttributes Attributes to display messages
@@ -62,7 +63,7 @@ public class TaskController {
 	}
 
 	/**
-	 * Update an existing Task
+	 * Update details of an existing Task 
 	 * 
 	 * @param updateTaskDto      Request DTO to update Task
 	 * @param redirectAttributes Attributes to display message
@@ -82,7 +83,7 @@ public class TaskController {
 	}
 
 	/**
-	 * Get the list of the tasks.
+	 * Get the list of the tasks with current User and list of all users.
 	 * 
 	 * @param filter Request Parameter to filter tasks
 	 * @return display home page

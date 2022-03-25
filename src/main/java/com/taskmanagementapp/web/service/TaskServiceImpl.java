@@ -23,9 +23,10 @@ import com.taskmanagementapp.web.repository.TaskRepository;
 import com.taskmanagementapp.web.repository.UserRepository;
 
 /**
- * Task Service Implementation
+ * Task Service Implementation to do CRUD on Task and Create Comments
  * 
  * @author Ayush
+ * @version 0.1, 25 March 2022
  */
 @Service
 @Transactional
@@ -42,10 +43,10 @@ public class TaskServiceImpl implements TaskService {
 	private CommentRepository commentRepository;
 
 	/**
-	 * Method To Create a new Task
+	 * Method To Create a new Task for status as "TO-DO"
 	 * 
 	 * @param createTaskDto DTO for creating new task
-	 * @param currentUser   Current User of application
+	 * @param currentUser  Current User creating the task
 	 * @return Task created task
 	 */
 	@Override
@@ -67,7 +68,7 @@ public class TaskServiceImpl implements TaskService {
 	}
 
 	/**
-	 * Method To Update a Task
+	 * Method To Update details of a Task and add comments
 	 * 
 	 * @param updateTaskDto DTO for updating a task
 	 * @param currentUser   User of application

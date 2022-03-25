@@ -28,7 +28,7 @@ import lombok.NoArgsConstructor;
  * Task Entity
  * 
  * @author Ayush
- *
+ * @version 0.1, 25 March 2022
  */
 @Data
 @NoArgsConstructor
@@ -81,18 +81,32 @@ public class Task implements Serializable {
 
 	@Column(name = "updated_at")
 	private Date updatedAt;
-
+	
+	/**
+	 * Method to provide value of created at on creation of entity
+	 */
 	@PrePersist
 	protected void onCreate() {
 		createdAt = new Date();
 
 	}
 
+	/**
+	 * Method to update value of updated at on updating the entity
+	 */
 	@PreUpdate
 	protected void onUpdate() {
 		updatedAt = new Date();
 	}
 
+	/**
+	 * Constructor to create a task with required fields
+	 * @param title Title of task
+	 * @param description Description of task
+	 * @param status Status of task
+	 * @param createdBy User creating the task
+	 * @param assignedTo User assigned to the task
+	 */
 	public Task(String title, String description, String status, User createdBy, User assignedTo) {
 		super();
 		this.title = title;

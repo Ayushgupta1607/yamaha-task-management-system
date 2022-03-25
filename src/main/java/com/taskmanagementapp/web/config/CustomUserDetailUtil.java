@@ -14,6 +14,7 @@ import com.taskmanagementapp.web.repository.UserRepository;
  * Spring Security User Detail Service Implementation
  * 
  * @author Ayush
+ * @version 0.1, 25 March 2022
  */
 @Service
 public class CustomUserDetailUtil implements UserDetailsService {

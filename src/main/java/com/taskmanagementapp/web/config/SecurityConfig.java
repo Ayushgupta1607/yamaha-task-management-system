@@ -17,6 +17,7 @@ import com.taskmanagementapp.web.common.Constants;
  * Spring Security Configuration
  * 
  * @author Ayush
+ * @version 0.1, 25 March 2022
  */
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
@@ -25,7 +26,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	private UserDetailsService userDetailsService;
 
 	/**
-	 * Password Encode configuration
+	 * Password Encoder configuration
 	 */
 	@Bean
 	public PasswordEncoder getPasswordEncoder() {

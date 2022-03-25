@@ -26,6 +26,7 @@ import lombok.ToString;
  * Comment Entity
  * 
  * @author Ayush
+ * @version 0.1, 25 March 2022
  */
 @Data
 @NoArgsConstructor
@@ -61,7 +62,12 @@ public class Comment implements Serializable {
 	protected void onCreate() {
 		createdAt = new Date();
 	}
-
+	/**
+	 * Constructor to create a comment with required fields
+	 * @param message Message of comment
+	 * @param user User creating the comment
+	 * @param task Task for which comment is created
+	 */
 	public Comment(String message, User user, Task task) {
 		super();
 		this.message = message;

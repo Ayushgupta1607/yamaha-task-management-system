@@ -7,6 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 /**
  * Task Management Application initialization
  * @author Ayush
+ * @version 0.1, 25 March 2022
  */
 @SpringBootApplication
 public class TaskManagementApplication {

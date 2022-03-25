@@ -14,9 +14,10 @@ import com.taskmanagementapp.web.model.entity.User;
 import com.taskmanagementapp.web.repository.UserRepository;
 
 /**
- * User Service Implementation
+ * User Service Implementation to Create and Read User
  * 
  * @author Ayush
+ * @version 0.1, 25 March 2022
  */
 @Service
 @Transactional
