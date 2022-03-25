@@ -11,7 +11,6 @@ import com.taskmanagementapp.web.model.entity.User;
  * Task Service Interface
  * 
  * @author Ayush
- * 
  */
 public interface TaskService {
 	/**

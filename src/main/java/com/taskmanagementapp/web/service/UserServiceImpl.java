@@ -9,7 +9,6 @@ import org.jboss.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.taskmanagementapp.web.controller.TaskController;
 import com.taskmanagementapp.web.exceptions.UserNotFoundException;
 import com.taskmanagementapp.web.model.entity.User;
 import com.taskmanagementapp.web.repository.UserRepository;
@@ -18,13 +17,11 @@ import com.taskmanagementapp.web.repository.UserRepository;
  * User Service Implementation
  * 
  * @author Ayush
- * 
  */
-
 @Service
 @Transactional
 public class UserServiceImpl implements UserService {
-	Logger logger = LoggerFactory.logger(TaskController.class);
+	private Logger logger = LoggerFactory.logger(UserServiceImpl.class);
 
 	@Autowired
 	private UserRepository userRepository;
@@ -36,12 +33,13 @@ public class UserServiceImpl implements UserService {
 	 * @return User saved user
 	 */
 	public User createUser(User user) {
-		logger.info("Create User Method of User Service is called with Parameters user:" + user);
+		logger.debug("Create User Method of User Service is called with Parameters user:" + user);
+		// Invoke User Repository to create new user if not exist already
 		if (Boolean.TRUE.equals(userRepository.existsByUsername(user.getUsername()))) {
 			throw new UserNotFoundException("user already exists");
 		}
 		userRepository.save(user);
-		logger.info("User Created Successfully user:" + user);
+		logger.debug("User Created Successfully user:" + user);
 		return user;
 	}
 
@@ -52,7 +50,8 @@ public class UserServiceImpl implements UserService {
 	 */
 	@Override
 	public List<User> getAllUsers() {
-		logger.info("Get All Users Method of User Service is called");
+		logger.debug("Get All Users Method of User Service is called");
+		// Invoke User Repository to find all users
 		return userRepository.findAll();
 	}
 
@@ -65,6 +64,7 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public User getUserById(Integer id) {
 		logger.info("Get User By Id Method of User Service is called with parameter id:" + id);
+		// Invoke user repository to find user by id
 		return userRepository.findById(id).orElseThrow(() -> new UserNotFoundException("User Not found"));
 	}
 
@@ -77,6 +77,7 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public User getUserByUsername(String username) {
 		logger.info("Get User By Username Method of User Service is called with parameter username:" + username);
+		// Invoke user repository to find user by username
 		return userRepository.findByUsername(username).orElseThrow(() -> new UserNotFoundException("User Not Found"));
 	}
 }

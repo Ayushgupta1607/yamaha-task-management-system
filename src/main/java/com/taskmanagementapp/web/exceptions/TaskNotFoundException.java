@@ -4,7 +4,6 @@ package com.taskmanagementapp.web.exceptions;
  * Task Not Found Exception
  * 
  * @author Ayush
- *
  */
 public class TaskNotFoundException extends RuntimeException {
 

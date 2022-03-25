@@ -24,9 +24,7 @@ import lombok.ToString;
  * User Entity
  * 
  * @author Ayush
- *
  */
-
 @Data
 @NoArgsConstructor
 @AllArgsConstructor

@@ -26,7 +26,6 @@ import lombok.ToString;
  * Comment Entity
  * 
  * @author Ayush
- *
  */
 @Data
 @NoArgsConstructor

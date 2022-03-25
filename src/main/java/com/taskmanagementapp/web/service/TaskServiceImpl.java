@@ -26,13 +26,11 @@ import com.taskmanagementapp.web.repository.UserRepository;
  * Task Service Implementation
  * 
  * @author Ayush
- *
  */
-
 @Service
 @Transactional
 public class TaskServiceImpl implements TaskService {
-	Logger logger = LoggerFactory.logger(TaskServiceImpl.class);
+	private Logger logger = LoggerFactory.logger(TaskServiceImpl.class);
 
 	@Autowired
 	private TaskRepository taskRepository;
@@ -50,22 +48,22 @@ public class TaskServiceImpl implements TaskService {
 	 * @param currentUser   Current User of application
 	 * @return Task created task
 	 */
-
 	@Override
 	public Task createTask(CreateTaskDto createTaskDto, User currentUser) {
 		logger.debug("Create Task Method of Task Service is called with Parameters createTaskDto:" + createTaskDto
 				+ "currentUser" + currentUser);
-
+		// Invoke user repository to find assigned to user
 		User taskAssignedToUser = null;
 		if (createTaskDto.getAssignedToId() != 0) {
 			taskAssignedToUser = userRepository.findById(createTaskDto.getAssignedToId())
 					.orElseThrow(() -> new UserNotFoundException("User not found"));
 		}
+		// Invoke task repository to create new task
 		Task task = new Task(createTaskDto.getTitle(), createTaskDto.getDescription(), "TO-DO", currentUser,
 				taskAssignedToUser);
 		taskRepository.save(task);
 		logger.debug("Task created Successfully, task:" + task);
-		return null;
+		return task;
 	}
 
 	/**
@@ -78,14 +76,13 @@ public class TaskServiceImpl implements TaskService {
 	public Task updateTask(UpdatetaskDto updateTaskDto, User currentUser) {
 		logger.debug("Update Task Method of Task Service is called with Parameters updateTaskDto:" + updateTaskDto
 				+ " currentUser:" + currentUser);
+		// Invoke task repository to find task
 		Task task = taskRepository.findById(updateTaskDto.getTaskId())
 				.orElseThrow(() -> new TaskNotFoundException("Task Not Found"));
-
 		// Update description of Task
 		task.setDescription(updateTaskDto.getDescription());
-
 		// Update status of Task if status is true
-		if ( Boolean.TRUE.equals(updateTaskDto.getStatus()) ) {
+		if (Boolean.TRUE.equals(updateTaskDto.getStatus())) {
 			if (task.getStatus().equals("TO-DO")) {
 				task.setStatus("IN-PROGRESS");
 				task.setStartedDate(new Date());
@@ -94,7 +91,6 @@ public class TaskServiceImpl implements TaskService {
 				task.setCompletionDate(new Date());
 			}
 		}
-
 		// Update assignedTo of Task if AssignedToId is provided
 		User taskAssignedToUser;
 		if (updateTaskDto.getAssignedToId() != null) {
@@ -106,8 +102,8 @@ public class TaskServiceImpl implements TaskService {
 				task.setAssignedTo(taskAssignedToUser);
 			}
 		}
+		// Invoke task repository to update Task
 		taskRepository.save(task);
-
 		// Add comments to Task if comments are provided
 		if (updateTaskDto.getComments() != null) {
 			for (String i : updateTaskDto.getComments()) {
@@ -127,6 +123,7 @@ public class TaskServiceImpl implements TaskService {
 	@Override
 	public void deleteTask(Integer taskId) {
 		logger.debug("Delete Task Method of Task Service is called with Parameters taskId:" + taskId);
+		// Invoke Database to find and delete task
 		Task task = taskRepository.findById(taskId).orElseThrow(() -> new TaskNotFoundException("Task Not Found"));
 		task.setDeleted(true);
 		taskRepository.save(task);
@@ -142,14 +139,15 @@ public class TaskServiceImpl implements TaskService {
 	@Override
 	public List<Task> getTasksOfUser(User user, String filter) {
 		logger.debug("Get Task Method of Task Service is called with Parameters user:" + user + " filter:" + filter);
-		List<Task> tasks = new ArrayList<Task>();
-		
+		List<Task> tasks = new ArrayList<>();
+		// Invoke Database to find tasks of user
 		if (filter == null)
 			tasks = taskRepository.findTaskCreatedByOrAssignedToAndIsDeleted(user, user, false);
 		else if (filter.equals("createdByMe")) {
 			tasks = taskRepository.findByCreatedByAndIsDeleted(user, false);
 		} else if (filter.equals("assignedToMe"))
 			tasks = taskRepository.findByAssignedToAndIsDeleted(user, false);
+		logger.debug("Tasks retrieved:" + tasks);
 		return tasks;
 	}
 

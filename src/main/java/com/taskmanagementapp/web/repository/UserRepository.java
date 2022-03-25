@@ -10,7 +10,6 @@ import com.taskmanagementapp.web.model.entity.User;
  * User Repository Interface
  * 
  * @author Ayush
- *
  */
 public interface UserRepository extends JpaRepository<User, Integer> {
 	public Optional<User> findByUsername(String username);

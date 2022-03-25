@@ -1,3 +1,4 @@
+// Display alert if available
 $(document).ready(function() {
 	let message = `${message}`;
 	if (message){
@@ -6,18 +7,19 @@ $(document).ready(function() {
 	}
 })
 
-
+//Display alert on click disabled button 
 function disabledClick(btn){
 	let message;
-	
 	if(btn=="edit") message="Completed Task cannot be updated."
 		if(btn=="delete") message="Assigned Task cannot be deleted"
 	$('#toastmessage').html(message)
 	$('#toast').toast('show')
 }
+
 var commentHTML=""
 var comments = [];
 var bool=false;
+//Adding Comments to update task page
 function addComment(task_id) {
 	 boxvalue = document.getElementById('commentInput-'+task_id).value;
 	 if(boxvalue)comments.push(boxvalue);  
@@ -30,6 +32,7 @@ function addComment(task_id) {
 	 return false;
 }
 
+//Reset update task form
 function resetUpdateForm(task_id){
 	$('#commentdiv-'+task_id).html("");
 	comments=[]
@@ -37,6 +40,7 @@ function resetUpdateForm(task_id){
 	$('#updateTaskForm-'+task_id).trigger("reset");
 }
 
+//Close Update Modal and reset
 function closeModal(task_id){
 	$('#commentdiv-'+task_id).html("");
 	comments=[]

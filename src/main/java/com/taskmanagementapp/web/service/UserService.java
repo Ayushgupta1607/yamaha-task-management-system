@@ -8,7 +8,6 @@ import com.taskmanagementapp.web.model.entity.User;
  * User Service Interface
  * 
  * @author Ayush
- *
  */
 public interface UserService {
 	/**

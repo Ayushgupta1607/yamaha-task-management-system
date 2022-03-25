@@ -14,18 +14,16 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.taskmanagementapp.web.dto.RegisterUserDto;
 import com.taskmanagementapp.web.model.entity.User;
-import com.taskmanagementapp.web.service.TaskServiceImpl;
 import com.taskmanagementapp.web.service.UserService;
 
 /**
  * Account Controller Configuration
  * 
  * @author Ayush
- * 
  */
 @Controller
 public class AccountController {
-	Logger logger = LoggerFactory.logger(TaskServiceImpl.class);
+	private Logger logger = LoggerFactory.logger(AccountController.class);
 
 	@Autowired
 	private PasswordEncoder passwordEncoder;
@@ -65,11 +63,14 @@ public class AccountController {
 	@ResponseBody
 	public ResponseEntity<User> register(@RequestBody RegisterUserDto registerUserDto) {
 		logger.info("Register User Request Recieved");
+		// Providing fields to user
 		User user = new User();
 		user.setName(registerUserDto.getName());
 		user.setEmail(registerUserDto.getEmail());
 		user.setUsername(registerUserDto.getUsername());
+		// Encrypting password of user
 		user.setPassword(passwordEncoder.encode(registerUserDto.getPassword()));
+		// Invoking User Service to create a user
 		userService.createUser(user);
 		return new ResponseEntity<>(user, HttpStatus.CREATED);
 	}

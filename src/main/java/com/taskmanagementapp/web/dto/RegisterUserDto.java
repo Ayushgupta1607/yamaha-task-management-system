@@ -8,7 +8,6 @@ import lombok.NoArgsConstructor;
  * Register User Request DTO
  * 
  * @author Ayush
- *
  */
 @Data
 @NoArgsConstructor

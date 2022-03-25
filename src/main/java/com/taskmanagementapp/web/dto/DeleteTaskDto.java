@@ -8,7 +8,6 @@ import lombok.NoArgsConstructor;
  * Delete Task Request DTO
  * 
  * @author Ayush
- *
  */
 @Data
 @NoArgsConstructor
