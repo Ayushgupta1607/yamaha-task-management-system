@@ -57,7 +57,6 @@ public class TaskController {
 		User currentUser = userService.getUserByUsername(username);
 		// Invoking Task Service method to create Task
 		taskService.createTask(createTaskDto, currentUser);
-
 		redirectAttributes.addFlashAttribute(Constants.NOTIFICATION_HEADER, Messages.TASK_CREATED_SUCCESSFULLY);
 		return Constants.REDIRECT_TASK;
 	}
@@ -78,7 +77,6 @@ public class TaskController {
 		User user = userService.getUserByUsername(username);
 		// Invoking Task Service method to update Task
 		taskService.updateTask(updateTaskDto, user);
-
 		redirectAttributes.addFlashAttribute(Constants.NOTIFICATION_HEADER, Messages.TASK_UPDATED_SUCCESSFULLY);
 		return Constants.REDIRECT_TASK;
 	}
@@ -121,7 +119,6 @@ public class TaskController {
 		logger.info("Delete Task request recieved");
 		// Invoking Task Service method to delete Task
 		taskService.deleteTask(deleteTaskDto.getTaskId());
-
 		redirectAttributes.addFlashAttribute(Constants.NOTIFICATION_HEADER, Messages.TASK_DELETED_SUCCESSFULLY);
 		return Constants.REDIRECT_TASK;
 	}

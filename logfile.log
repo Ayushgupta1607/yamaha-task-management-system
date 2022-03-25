@@ -2575,3 +2575,58 @@ Caused by: java.lang.Error: Unresolved compilation problems:
 2022-03-25 10:48:01.657  INFO 18032 --- [Thread-400] com.zaxxer.hikari.HikariDataSource       : HikariPool-100 - Shutdown initiated...
 2022-03-25 10:48:01.659  INFO 18032 --- [Thread-400] com.zaxxer.hikari.HikariDataSource       : HikariPool-100 - Shutdown completed.
 2022-03-25 10:48:01.717  INFO 18032 --- [restartedMain] c.t.TaskManagementApplication            : Application Started
+2022-03-25 10:48:01.748  INFO 18032 --- [restartedMain] c.t.TaskManagementApplication            : Starting TaskManagementApplication using Java 11 on SJ000134 with PID 18032 (C:\Users\ve00ym351\Documents\OJT\TaskManagement\target\classes started by VE00YM351 in C:\Users\ve00ym351\Documents\OJT\TaskManagement)
+2022-03-25 10:48:01.748  INFO 18032 --- [restartedMain] c.t.TaskManagementApplication            : No active profile set, falling back to 1 default profile: "default"
+2022-03-25 10:48:01.869  INFO 18032 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-03-25 10:48:01.887  INFO 18032 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 17 ms. Found 3 JPA repository interfaces.
+2022-03-25 10:48:01.918  INFO 18032 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.ws.config.annotation.DelegatingWsConfiguration' of type [org.springframework.ws.config.annotation.DelegatingWsConfiguration$$EnhancerBySpringCGLIB$$b6d2ace2] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-03-25 10:48:01.918  INFO 18032 --- [restartedMain] .w.s.a.s.AnnotationActionEndpointMapping : Supporting [WS-Addressing August 2004, WS-Addressing 1.0]
+2022-03-25 10:48:01.946  INFO 18032 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 5000 (http)
+2022-03-25 10:48:01.946  INFO 18032 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-03-25 10:48:01.946  INFO 18032 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.58]
+2022-03-25 10:48:01.989  INFO 18032 --- [restartedMain] org.apache.jasper.servlet.TldScanner     : At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+2022-03-25 10:48:01.991  INFO 18032 --- [restartedMain] o.a.c.c.C.[Tomcat-1].[localhost].[/tms]  : Initializing Spring embedded WebApplicationContext
+2022-03-25 10:48:01.991  INFO 18032 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 242 ms
+2022-03-25 10:48:02.019  INFO 18032 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-101 - Starting...
+2022-03-25 10:48:02.149  INFO 18032 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-101 - Start completed.
+2022-03-25 10:48:02.227  INFO 18032 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-03-25 10:48:02.271  WARN 18032 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-03-25 10:48:02.325  INFO 18032 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will not secure any request
+2022-03-25 10:48:02.383  INFO 18032 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2022-03-25 10:48:02.397  INFO 18032 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 5000 (http) with context path '/tms'
+2022-03-25 10:48:02.402  INFO 18032 --- [restartedMain] c.t.TaskManagementApplication            : Started TaskManagementApplication in 0.681 seconds (JVM running for 38571.514)
+2022-03-25 10:48:02.402  INFO 18032 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2022-03-25 10:50:06.085  INFO 18032 --- [http-nio-5000-exec-1] o.a.c.c.C.[Tomcat-1].[localhost].[/tms]  : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-03-25 10:50:06.086  INFO 18032 --- [http-nio-5000-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-03-25 10:50:06.086  INFO 18032 --- [http-nio-5000-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
+2022-03-25 10:50:06.095  INFO 18032 --- [http-nio-5000-exec-2] c.t.web.controller.AccountController     : Get Login Page request recieved
+2022-03-25 10:50:13.218  INFO 18032 --- [http-nio-5000-exec-4] c.t.web.controller.TaskController        : View Tasks Page request recieved
+2022-03-25 10:50:13.225  INFO 18032 --- [http-nio-5000-exec-4] c.t.web.service.UserServiceImpl          : Get User By Username Method of User Service is called with parameter username:ayush
+2022-03-25 10:50:35.842  INFO 18032 --- [http-nio-5000-exec-5] c.t.web.controller.TaskController        : Create Task request recieved
+2022-03-25 10:50:35.843  INFO 18032 --- [http-nio-5000-exec-5] c.t.web.service.UserServiceImpl          : Get User By Username Method of User Service is called with parameter username:ayush
+2022-03-25 10:50:35.875  INFO 18032 --- [http-nio-5000-exec-6] c.t.web.controller.TaskController        : View Tasks Page request recieved
+2022-03-25 10:50:35.875  INFO 18032 --- [http-nio-5000-exec-6] c.t.web.service.UserServiceImpl          : Get User By Username Method of User Service is called with parameter username:ayush
+2022-03-25 10:50:42.538  INFO 18032 --- [http-nio-5000-exec-7] c.t.web.controller.TaskController        : Create Task request recieved
+2022-03-25 10:50:42.539  INFO 18032 --- [http-nio-5000-exec-7] c.t.web.service.UserServiceImpl          : Get User By Username Method of User Service is called with parameter username:ayush
+2022-03-25 10:50:42.553  INFO 18032 --- [http-nio-5000-exec-8] c.t.web.controller.TaskController        : View Tasks Page request recieved
+2022-03-25 10:50:42.553  INFO 18032 --- [http-nio-5000-exec-8] c.t.web.service.UserServiceImpl          : Get User By Username Method of User Service is called with parameter username:ayush
+2022-03-25 10:51:04.000  INFO 18032 --- [http-nio-5000-exec-9] c.t.web.controller.TaskController        : Update Task request recieved
+2022-03-25 10:51:04.001  INFO 18032 --- [http-nio-5000-exec-9] c.t.web.service.UserServiceImpl          : Get User By Username Method of User Service is called with parameter username:ayush
+2022-03-25 10:51:04.019  INFO 18032 --- [http-nio-5000-exec-10] c.t.web.controller.TaskController        : View Tasks Page request recieved
+2022-03-25 10:51:04.019  INFO 18032 --- [http-nio-5000-exec-10] c.t.web.service.UserServiceImpl          : Get User By Username Method of User Service is called with parameter username:ayush
+2022-03-25 10:51:13.536  INFO 18032 --- [http-nio-5000-exec-2] c.t.web.controller.TaskController        : Update Task request recieved
+2022-03-25 10:51:13.537  INFO 18032 --- [http-nio-5000-exec-2] c.t.web.service.UserServiceImpl          : Get User By Username Method of User Service is called with parameter username:ayush
+2022-03-25 10:51:13.554  INFO 18032 --- [http-nio-5000-exec-3] c.t.web.controller.TaskController        : View Tasks Page request recieved
+2022-03-25 10:51:13.554  INFO 18032 --- [http-nio-5000-exec-3] c.t.web.service.UserServiceImpl          : Get User By Username Method of User Service is called with parameter username:ayush
+2022-03-25 10:51:53.853  INFO 18032 --- [http-nio-5000-exec-4] c.t.web.controller.TaskController        : Update Task request recieved
+2022-03-25 10:51:53.855  INFO 18032 --- [http-nio-5000-exec-4] c.t.web.service.UserServiceImpl          : Get User By Username Method of User Service is called with parameter username:ayush
+2022-03-25 10:51:53.872  INFO 18032 --- [http-nio-5000-exec-5] c.t.web.controller.TaskController        : View Tasks Page request recieved
+2022-03-25 10:51:53.872  INFO 18032 --- [http-nio-5000-exec-5] c.t.web.service.UserServiceImpl          : Get User By Username Method of User Service is called with parameter username:ayush
+2022-03-25 10:52:16.504  INFO 18032 --- [http-nio-5000-exec-7] c.t.web.controller.TaskController        : Update Task request recieved
+2022-03-25 10:52:16.505  INFO 18032 --- [http-nio-5000-exec-7] c.t.web.service.UserServiceImpl          : Get User By Username Method of User Service is called with parameter username:ayush
+2022-03-25 10:52:16.525  INFO 18032 --- [http-nio-5000-exec-8] c.t.web.controller.TaskController        : View Tasks Page request recieved
+2022-03-25 10:52:16.526  INFO 18032 --- [http-nio-5000-exec-8] c.t.web.service.UserServiceImpl          : Get User By Username Method of User Service is called with parameter username:ayush
+2022-03-25 10:54:46.969  INFO 18032 --- [Thread-404] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-03-25 10:54:46.970  INFO 18032 --- [Thread-404] com.zaxxer.hikari.HikariDataSource       : HikariPool-101 - Shutdown initiated...
+2022-03-25 10:54:46.971  INFO 18032 --- [Thread-404] com.zaxxer.hikari.HikariDataSource       : HikariPool-101 - Shutdown completed.
+2022-03-25 10:54:47.043  INFO 18032 --- [restartedMain] c.t.TaskManagementApplication            : Application Started
