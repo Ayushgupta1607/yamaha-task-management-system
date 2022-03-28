@@ -8,6 +8,7 @@ $(document).ready(function() {
 	}
 	$('#hometable').DataTable({
 //			 "iDisplayLength":6
+//		paging: false
 	    	"searching": false
 	  });
 	$('.dataTables_length').addClass('bs-select');

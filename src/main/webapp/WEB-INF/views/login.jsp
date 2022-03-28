@@ -14,11 +14,11 @@
 
 <style> <%@include file="css/login.css"%> </style>
 </head>
-<body>
 	
 
  <body class="text-center">
  <form class="form-signin" action='login' method='POST'>
+ <img style="height:75px" alt="image"  src="<c:url value="/download.png" />">
       <h1 style="margin-bottom:50px ;font-size:2rem" class="h3  font-weight-normal">Task Management System</h1>
 
       <input type="text" name='username' class="form-control" placeholder="Username" required autofocus>
@@ -33,5 +33,8 @@
       </div>
       <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
     </form>
+    <footer style="z-index:15 ; text-align:center">
+	
+</footer>
 </body>
 </html>

@@ -24,7 +24,7 @@
 		</div>
 	</div>
 	<br>
-	<table class="table hometable table-striped table-borderless" id="hometable">
+	<table   class="table hometable table-striped table-borderless" id="hometable">
 		<thead >
 			<tr style="border:solid ; border-color:grey ;border-width:0px;border-bottom-width:1.5px">
 				<th>Task ID</th>
