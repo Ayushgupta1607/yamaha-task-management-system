@@ -19,16 +19,17 @@
 
  <body class="text-center">
  <form class="form-signin" action='login' method='POST'>
-      <h1 class="h3 mb-3 font-weight-normal">Task Management System</h1>
-  <c:if test="${not empty SPRING_SECURITY_LAST_EXCEPTION }">
-<font color="red">
-	<c:out value="Invalid Credentials"></c:out>
-</font>
-</c:if>
+      <h1 style="margin-bottom:50px ;font-size:2rem" class="h3  font-weight-normal">Task Management System</h1>
+
       <input type="text" name='username' class="form-control" placeholder="Username" required autofocus>
 
       <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password" required>
       <div class="checkbox mb-3">
+        <c:if test="${not empty SPRING_SECURITY_LAST_EXCEPTION }">
+<font color="red">
+	<c:out value="Invalid/Incorrect Credentials"></c:out>
+</font>
+</c:if>
       </div>
       <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
     </form>
