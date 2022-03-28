@@ -154,3 +154,14 @@ body {
 .badge {
 	margin-top: 12.5px;
 }
+.viewContent{
+	overflow:auto;
+	max-width:225px;
+}
+.homeTitle{
+	overflow:auto;
+	max-width:225px;
+}
+.modal-body{
+	overflow-y:auto;
+}

@@ -23,11 +23,11 @@
 						</tr>
 						<tr>
 							<th scope="row">Title</th>
-							<td>${task.title }</td>
+							<td class="viewContent" >${task.title }</td>
 						</tr>
 						<tr>
 							<th scope="row">Description</th>
-							<td>${task.description }</td>
+							<td  class="viewContent" >${task.description }</td>
 						</tr>
 						<tr>
 							<th scope="row">Status</th>
@@ -74,7 +74,7 @@
 				<h5>Comments</h3>
 				<div style="overflow-y: auto;  max-height: 100px">
 				<c:forEach items="${task.comments }" var="comment">
-							<b>${comment.user.username }</b>
+							<b>${comment.user.username.toUpperCase() }</b>
 							<p>${comment.message }</p>
 						</c:forEach>
 						</div>

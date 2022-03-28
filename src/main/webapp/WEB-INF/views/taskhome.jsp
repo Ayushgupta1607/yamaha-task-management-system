@@ -42,7 +42,7 @@
 		<c:forEach items="${tasks}" var="task">
 			<tr style="border:solid ; border-color:grey ;border-width:0px;border-bottom-width:1.5px">
 			<td>Task${task.taskId }</td>
-				<td>${task.title}</td>
+				<td class="homeTitle">${task.title}</td>
 				<c:choose>
 				<c:when test="${(task.status=='TO-DO')}"><td style="color:blue; font-weight:bold" class="status ">${task.status}</td></c:when>
 				<c:when test="${(task.status=='IN-PROGRESS')}"><td style="color:orange; font-weight:bold" class="status ">${task.status}</td></c:when>
