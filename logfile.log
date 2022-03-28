@@ -829,3 +829,72 @@ org.postgresql.util.PSQLException: ERROR: value too long for type character vary
 2022-03-28 11:06:57.026  INFO 17016 --- [Thread-135] com.zaxxer.hikari.HikariDataSource       : HikariPool-34 - Shutdown initiated...
 2022-03-28 11:06:57.030  INFO 17016 --- [Thread-135] com.zaxxer.hikari.HikariDataSource       : HikariPool-34 - Shutdown completed.
 2022-03-28 11:06:57.083  INFO 17016 --- [restartedMain] c.t.TaskManagementApplication            : Application Started
+2022-03-28 11:06:57.103  INFO 17016 --- [restartedMain] c.t.TaskManagementApplication            : Starting TaskManagementApplication using Java 11 on SJ000134 with PID 17016 (C:\Users\ve00ym351\Documents\OJT\TaskManagement\target\classes started by VE00YM351 in C:\Users\ve00ym351\Documents\OJT\TaskManagement)
+2022-03-28 11:06:57.103  INFO 17016 --- [restartedMain] c.t.TaskManagementApplication            : No active profile set, falling back to 1 default profile: "default"
+2022-03-28 11:06:57.211  INFO 17016 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-03-28 11:06:57.225  INFO 17016 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 13 ms. Found 3 JPA repository interfaces.
+2022-03-28 11:06:57.250  INFO 17016 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.ws.config.annotation.DelegatingWsConfiguration' of type [org.springframework.ws.config.annotation.DelegatingWsConfiguration$$EnhancerBySpringCGLIB$$9ccde106] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-03-28 11:06:57.250  INFO 17016 --- [restartedMain] .w.s.a.s.AnnotationActionEndpointMapping : Supporting [WS-Addressing August 2004, WS-Addressing 1.0]
+2022-03-28 11:06:57.278  INFO 17016 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 5000 (http)
+2022-03-28 11:06:57.279  INFO 17016 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-03-28 11:06:57.279  INFO 17016 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.58]
+2022-03-28 11:06:57.320  INFO 17016 --- [restartedMain] org.apache.jasper.servlet.TldScanner     : At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+2022-03-28 11:06:57.321  INFO 17016 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/tms]    : Initializing Spring embedded WebApplicationContext
+2022-03-28 11:06:57.321  INFO 17016 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 216 ms
+2022-03-28 11:06:57.352  INFO 17016 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-35 - Starting...
+2022-03-28 11:06:57.527  INFO 17016 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-35 - Start completed.
+2022-03-28 11:06:57.640  INFO 17016 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-03-28 11:06:57.683  WARN 17016 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-03-28 11:06:57.746  INFO 17016 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will not secure any request
+2022-03-28 11:06:57.808  INFO 17016 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2022-03-28 11:06:57.820  INFO 17016 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 5000 (http) with context path '/tms'
+2022-03-28 11:06:57.824  INFO 17016 --- [restartedMain] c.t.TaskManagementApplication            : Started TaskManagementApplication in 0.737 seconds (JVM running for 244963.321)
+2022-03-28 11:06:57.824  INFO 17016 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2022-03-28 11:07:44.678  INFO 17016 --- [http-nio-5000-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/tms]    : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-03-28 11:07:44.679  INFO 17016 --- [http-nio-5000-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-03-28 11:07:44.681  INFO 17016 --- [http-nio-5000-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2022-03-28 11:07:45.128  INFO 17016 --- [http-nio-5000-exec-2] c.t.web.controller.TaskController        : View Tasks Page request recieved
+2022-03-28 11:07:45.133  INFO 17016 --- [http-nio-5000-exec-2] c.t.web.service.UserServiceImpl          : Get User By Username Method of User Service is called with parameter username:ayush
+2022-03-28 11:08:09.167  INFO 17016 --- [http-nio-5000-exec-3] c.t.web.controller.TaskController        : Update Task request recieved
+2022-03-28 11:08:09.168  INFO 17016 --- [http-nio-5000-exec-3] c.t.web.service.UserServiceImpl          : Get User By Username Method of User Service is called with parameter username:ayush
+2022-03-28 11:08:09.186  INFO 17016 --- [http-nio-5000-exec-4] c.t.web.controller.TaskController        : View Tasks Page request recieved
+2022-03-28 11:08:09.186  INFO 17016 --- [http-nio-5000-exec-4] c.t.web.service.UserServiceImpl          : Get User By Username Method of User Service is called with parameter username:ayush
+2022-03-28 11:15:24.400  INFO 17016 --- [http-nio-5000-exec-7] c.t.web.controller.TaskController        : View Tasks Page request recieved
+2022-03-28 11:15:24.402  INFO 17016 --- [http-nio-5000-exec-7] c.t.web.service.UserServiceImpl          : Get User By Username Method of User Service is called with parameter username:ayush
+2022-03-28 11:16:02.827  INFO 17016 --- [http-nio-5000-exec-8] c.t.web.controller.TaskController        : View Tasks Page request recieved
+2022-03-28 11:16:02.828  INFO 17016 --- [http-nio-5000-exec-8] c.t.web.service.UserServiceImpl          : Get User By Username Method of User Service is called with parameter username:ayush
+2022-03-28 11:16:38.263  INFO 17016 --- [http-nio-5000-exec-10] c.t.web.controller.TaskController        : View Tasks Page request recieved
+2022-03-28 11:16:38.263  INFO 17016 --- [http-nio-5000-exec-10] c.t.web.service.UserServiceImpl          : Get User By Username Method of User Service is called with parameter username:ayush
+2022-03-28 11:16:40.677  INFO 17016 --- [http-nio-5000-exec-1] c.t.web.controller.TaskController        : View Tasks Page request recieved
+2022-03-28 11:16:40.678  INFO 17016 --- [http-nio-5000-exec-1] c.t.web.service.UserServiceImpl          : Get User By Username Method of User Service is called with parameter username:ayush
+2022-03-28 11:16:56.658  INFO 17016 --- [http-nio-5000-exec-2] c.t.web.controller.TaskController        : View Tasks Page request recieved
+2022-03-28 11:16:56.659  INFO 17016 --- [http-nio-5000-exec-2] c.t.web.service.UserServiceImpl          : Get User By Username Method of User Service is called with parameter username:ayush
+2022-03-28 11:18:10.807  INFO 17016 --- [http-nio-5000-exec-5] c.t.web.controller.TaskController        : View Tasks Page request recieved
+2022-03-28 11:18:10.808  INFO 17016 --- [http-nio-5000-exec-5] c.t.web.service.UserServiceImpl          : Get User By Username Method of User Service is called with parameter username:ayush
+2022-03-28 11:20:32.197  INFO 17016 --- [http-nio-5000-exec-8] c.t.web.controller.TaskController        : View Tasks Page request recieved
+2022-03-28 11:20:32.198  INFO 17016 --- [http-nio-5000-exec-8] c.t.web.service.UserServiceImpl          : Get User By Username Method of User Service is called with parameter username:ayush
+2022-03-28 11:21:29.818  INFO 17016 --- [Thread-139] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-03-28 11:21:29.819  INFO 17016 --- [Thread-139] com.zaxxer.hikari.HikariDataSource       : HikariPool-35 - Shutdown initiated...
+2022-03-28 11:21:29.823  INFO 17016 --- [Thread-139] com.zaxxer.hikari.HikariDataSource       : HikariPool-35 - Shutdown completed.
+2022-03-28 11:21:29.875  INFO 17016 --- [restartedMain] c.t.TaskManagementApplication            : Application Started
+2022-03-28 11:21:29.895  INFO 17016 --- [restartedMain] c.t.TaskManagementApplication            : Starting TaskManagementApplication using Java 11 on SJ000134 with PID 17016 (C:\Users\ve00ym351\Documents\OJT\TaskManagement\target\classes started by VE00YM351 in C:\Users\ve00ym351\Documents\OJT\TaskManagement)
+2022-03-28 11:21:29.895  INFO 17016 --- [restartedMain] c.t.TaskManagementApplication            : No active profile set, falling back to 1 default profile: "default"
+2022-03-28 11:21:30.034  INFO 17016 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-03-28 11:21:30.050  INFO 17016 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 15 ms. Found 3 JPA repository interfaces.
+2022-03-28 11:21:30.095  INFO 17016 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.ws.config.annotation.DelegatingWsConfiguration' of type [org.springframework.ws.config.annotation.DelegatingWsConfiguration$$EnhancerBySpringCGLIB$$9ccde106] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-03-28 11:21:30.095  INFO 17016 --- [restartedMain] .w.s.a.s.AnnotationActionEndpointMapping : Supporting [WS-Addressing August 2004, WS-Addressing 1.0]
+2022-03-28 11:21:30.126  INFO 17016 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 5000 (http)
+2022-03-28 11:21:30.126  INFO 17016 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-03-28 11:21:30.126  INFO 17016 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.58]
+2022-03-28 11:21:30.173  INFO 17016 --- [restartedMain] org.apache.jasper.servlet.TldScanner     : At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+2022-03-28 11:21:30.174  INFO 17016 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/tms]    : Initializing Spring embedded WebApplicationContext
+2022-03-28 11:21:30.174  INFO 17016 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 278 ms
+2022-03-28 11:21:30.205  INFO 17016 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-36 - Starting...
+2022-03-28 11:21:30.347  INFO 17016 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-36 - Start completed.
+2022-03-28 11:21:30.463  INFO 17016 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-03-28 11:21:30.510  WARN 17016 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-03-28 11:21:30.564  INFO 17016 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will not secure any request
+2022-03-28 11:21:30.630  INFO 17016 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2022-03-28 11:21:30.644  INFO 17016 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 5000 (http) with context path '/tms'
+2022-03-28 11:21:30.647  INFO 17016 --- [restartedMain] c.t.TaskManagementApplication            : Started TaskManagementApplication in 0.769 seconds (JVM running for 245836.126)
+2022-03-28 11:21:30.648  INFO 17016 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged

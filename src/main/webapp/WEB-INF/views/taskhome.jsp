@@ -1,12 +1,10 @@
 
 <%@ include file="header.jsp"%>
 
-<br>
 
-<main >
-<div class="container taskTable">
+<div class="container taskTable" id="taskTable">
 <div style="display:flex;flex-direction:row">
-	<h2 style="display:inline">Tasks List</h2>
+	<h2 style="display:inline">TASK LIST</h2>
 	<button style="margin-left:auto;margin-bottom:5px" class="btn createTaskButton btn-primary" data-toggle="modal"
 		data-target="#createTaskModal">Create Task</button>
 		</div>
@@ -26,7 +24,7 @@
 		</div>
 	</div>
 	<br>
-	<table class="table hometable table-striped table-borderless">
+	<table class="table hometable table-striped table-borderless" id="hometable">
 		<thead >
 			<tr style="border:solid ; border-color:grey ;border-width:0px;border-bottom-width:1.5px">
 				<th>Task ID</th>
@@ -34,7 +32,7 @@
 				<th>Status</th>
 				<th>Created By</th>
 				<th>Assigned To</th>
-				<th style="text-align:center">Action</th>
+				<th style="width:150px;text-align:center">Action</th>
 
 			</tr>
 		</thead>
@@ -99,6 +97,6 @@
 	</table>
 
 </div>
-</main>
+
 
 <%@ include file="footer.jsp"%>

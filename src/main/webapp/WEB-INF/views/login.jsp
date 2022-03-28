@@ -22,7 +22,7 @@
       <h1 class="h3 mb-3 font-weight-normal">Task Management System</h1>
   <c:if test="${not empty SPRING_SECURITY_LAST_EXCEPTION }">
 <font color="red">
-	<c:out value="Bad Credentials"></c:out>
+	<c:out value="Invalid Credentials"></c:out>
 </font>
 </c:if>
       <input type="text" name='username' class="form-control" placeholder="Username" required autofocus>

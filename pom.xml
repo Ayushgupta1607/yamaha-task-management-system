@@ -12,7 +12,7 @@
 	<artifactId>TaskManagement</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>TaskManagement-YM351</name>
-	<description>Demo project for Spring Boot</description>
+	<description>Application to assign and manage tasks for registered users.</description>
 	<properties>
 		<java.version>11</java.version>
 	</properties>

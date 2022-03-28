@@ -1,6 +1,7 @@
 .taskTable {
 	display: flex;
 	flex-direction: column;
+	margin-bottom:20px;
 }
 
 .createTaskButton {

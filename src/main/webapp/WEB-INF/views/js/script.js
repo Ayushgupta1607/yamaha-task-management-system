@@ -1,10 +1,16 @@
 // Display alert if available
 $(document).ready(function() {
+	 
 	let message = `${message}`;
 	if (message){
 		$('#toastmessage').html(message)
 		$('#toast').toast('show')
 	}
+	$('#hometable').DataTable({
+//			 "iDisplayLength":6
+	    	"searching": false
+	  });
+	$('.dataTables_length').addClass('bs-select');
 })
 
 //Display alert on click disabled button 
